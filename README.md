@@ -32,7 +32,10 @@ webpack: 1篇
 [分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
 
 ## webpack
-[从零搭建TypeScript与React开发环境](ttps://github.com/zhangwinwin/FEBlog/blob/master/blog/12.md)
+[从零搭建TypeScript与React开发环境](https://github.com/zhangwinwin/FEBlog/blob/master/blog/12.md)
+
+## 开发工具
+[梳理git的常用指令](https://github.com/zhangwinwin/FEBlog/blob/master/blog/13.md)
 
 ## 勘误及提问
 
