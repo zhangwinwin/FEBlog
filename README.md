@@ -35,6 +35,7 @@ webpack: 1篇
 [从零搭建TypeScript与React开发环境](https://github.com/zhangwinwin/FEBlog/blob/master/blog/12.md)
 [梳理git的常用指令](https://github.com/zhangwinwin/FEBlog/blob/master/blog/13.md)
 [理解前端模块概念：CommonJs与ES6Module](https://github.com/zhangwinwin/FEBlog/blob/master/blog/14.md)
+[JavaScript代码是怎么执行的？](https://github.com/zhangwinwin/FEBlog/blob/master/blog/15.md)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)
