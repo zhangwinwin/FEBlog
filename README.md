@@ -41,6 +41,7 @@ Vue: 1篇
 [理解前端模块概念：CommonJs与ES6Module](https://github.com/zhangwinwin/FEBlog/blob/master/blog/14.md)
 [JavaScript代码是怎么执行的？](https://github.com/zhangwinwin/FEBlog/blob/master/blog/15.md)
 [JavaScript闭包是怎么运行的？](https://github.com/zhangwinwin/FEBlog/blob/master/blog/17.md)
+[熟悉而陌生API：Promise](https://github.com/zhangwinwin/FEBlog/blob/master/blog/18.md)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)
