@@ -31,9 +31,11 @@ Vue: 1篇
 
 ## 开发遇到的坑与解决方法
 [分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
+[vue开发中的"骚操作"](https://github.com/zhangwinwin/FEBlog/blob/master/blog/19.md)
 
 ## Vue
 [简述VUE的响应式原理](https://github.com/zhangwinwin/FEBlog/blob/master/blog/16.md)
+
 
 ## 前端知识
 [从零搭建TypeScript与React开发环境](https://github.com/zhangwinwin/FEBlog/blob/master/blog/12.md)
