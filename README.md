@@ -49,6 +49,7 @@ Vue: 1篇
 [熟悉而陌生API：Promise](https://github.com/zhangwinwin/FEBlog/blob/master/blog/18.md)
 [聊一聊Axios与登录机制](https://github.com/zhangwinwin/FEBlog/blob/master/blog/20.md)
 [CSS居中的常用方式以及优缺点](https://github.com/zhangwinwin/FEBlog/blob/master/blog/25.md)
+[JavaScript与数据库的碰撞！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/26.md)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)
