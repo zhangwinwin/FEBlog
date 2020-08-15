@@ -4,11 +4,10 @@
 ## 进度
 浏览器相关：5篇  
 算法：1篇  
-http：3篇  
-开发遇到的坑与解决方法：1篇
+http：7篇  
 JavaScript基础知识：2篇
-webpack: 1篇
-Vue: 1篇
+前端知识：11篇
+Vue: 5篇
 
 ## 其他专栏
 [掘金主页](https://juejin.im/user/5c6b66e9e51d4539a642640c)
@@ -32,13 +31,12 @@ Vue: 1篇
 [使用wireSharp分析TLS握手过程](https://github.com/zhangwinwin/FEBlog/blob/master/blog/22.md)
 [URI与URL傻傻分不清楚？](https://github.com/zhangwinwin/FEBlog/blob/master/blog/23.md)
 
-## 开发遇到的坑与解决方法
-[分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
-[vue开发中的"骚操作"](https://github.com/zhangwinwin/FEBlog/blob/master/blog/19.md)
-
 ## Vue
 [简述VUE的响应式原理](https://github.com/zhangwinwin/FEBlog/blob/master/blog/16.md)
 [抽丝剥茧般的阅读源码，将$nextTick()拉下神坛！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/28.md)
+[挖掘隐藏在源码中的Vue技巧！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/30.md)
+[分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
+[vue开发中的"骚操作"](https://github.com/zhangwinwin/FEBlog/blob/master/blog/19.md)
 
 
 ## 前端知识
