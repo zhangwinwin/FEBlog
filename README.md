@@ -7,7 +7,7 @@
 http：7篇  
 JavaScript基础知识：2篇
 前端知识：11篇
-Vue: 5篇
+Vue: 6篇
 
 ## 其他专栏
 [掘金主页](https://juejin.im/user/5c6b66e9e51d4539a642640c)
@@ -37,6 +37,7 @@ Vue: 5篇
 [挖掘隐藏在源码中的Vue技巧！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/30.md)
 [分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
 [vue开发中的"骚操作"](https://github.com/zhangwinwin/FEBlog/blob/master/blog/19.md)
+[这几个小技巧，让你书写不一样的Vue！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/31.md))
 
 
 ## 前端知识
