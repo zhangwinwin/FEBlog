@@ -37,7 +37,8 @@ Vue: 6篇
 [挖掘隐藏在源码中的Vue技巧！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/30.md)
 [分享：使用vue2.0开发移动端应用时遇到的坑与解决方法](https://github.com/zhangwinwin/FEBlog/blob/master/blog/7.md)
 [vue开发中的"骚操作"](https://github.com/zhangwinwin/FEBlog/blob/master/blog/19.md)
-[这几个小技巧，让你书写不一样的Vue！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/31.md))
+[这几个小技巧，让你书写不一样的Vue！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/31.md)
+[在Vue中使用HOC模式](https://github.com/zhangwinwin/FEBlog/blob/master/blog/31.md)
 
 
 ## 前端知识
