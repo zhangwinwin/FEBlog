@@ -53,6 +53,8 @@ Vue: 6篇
 [JavaScript与数据库的碰撞！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/26.md)
 [0.1+0.2===0.3?事情并没有那么简单！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/26.md)
 [JavaScript与多线程的不解之缘！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/29.md)
+[OAuth2.0与前端无感知token刷新实现](https://github.com/zhangwinwin/FEBlog/blob/master/blog/33.md)
+[后端API接口的错误信息返回规范](https://github.com/zhangwinwin/FEBlog/blob/master/blog/34.md)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)
