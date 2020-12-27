@@ -9,7 +9,11 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "compression-webpack-plugin": "^7.1.1",
     "core-js": "^3.6.5",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "sass-resources-loader": "^2.1.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

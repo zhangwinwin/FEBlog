@@ -1,0 +1,54 @@
+@import './variables.scss';
+
+/**
+* 1px细线
+* border-width-1px(top,right,bottom,left, border-color, border-radius);
+* top,right,bottom,left 值为 1 或者 0;
+* @include border-width-1px(0, 0, 2, 0, #f57c38);
+*/
+@mixin border-width-1px($border-width-top: 0, $border-width-right: 0, $border-width-bottom: 0, $border-width-left: 0, $border-color: $g-bordercolor, $border-radius: 0){
+  position: relative;
+  border-color: $border-color;
+  border-width: #{$border-width-top}Px #{$border-width-right}Px #{$border-width-bottom}Px #{$border-width-left}Px; // ignored  postcss-pxtorem
+  border-style: solid;
+  @if $border-radius != 0{
+    border-radius: $border-radius/2/40px * 1rem;
+  }
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    border: none;
+    &::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-color: $border-color;
+      border-width: #{$border-width-top}Px #{$border-width-right}Px #{$border-width-bottom}Px #{$border-width-left}Px; // ignored  postcss-pxtorem
+      border-style: solid;
+      width: 200%;
+      height: 200%;
+      transform: scale(.5);
+      transform-origin: 0 0;
+      pointer-events: none;
+      @if $border-radius != 0{
+        border-radius: $border-radius;
+      }
+    }
+  }
+}
+
+
+%ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
