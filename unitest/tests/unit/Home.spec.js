@@ -15,6 +15,7 @@
 
 import { mount, shallowMount } from '@vue/test-utils';
 import Home from '@/views/Home.vue';
+import Hello from '@/components/HelloWorld.vue';
 
 describe('Home.vue', () => {
   it('renders msg when mounted', () => {
@@ -24,5 +25,10 @@ describe('Home.vue', () => {
     const wrapper = shallowMount(Home);
     // 检查文本内容
     expect(wrapper.text()).toContain(msg)
+  })
+  it('click the check button, home.greeting will change to hello', () => {
+    const wrapper = shallowMount(Home);
+    wrapper.findComponent(Hello).vm.$emit('sayHello', 'hello');
+    expect(wrapper.vm.greeting).toBe('hello')
   })
 })

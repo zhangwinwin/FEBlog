@@ -1,14 +1,15 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <p>Welcome to Your Vue.js App</p>
-    <button @click="handleCheck">查看弹窗</button>
+    <HelloWorld msg="Welcome to Your Vue.js App" @sayHello='hanldeSayHello'/>
+    <p>{{greeting}} Welcome to Your Vue.js App</p>
+    <button @click="handleCheck" class="check">查看弹窗</button>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import * as alarmApi from '@/api/alarmApi.js';
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -26,41 +27,53 @@ export default {
     return {
       primaryId: 1,
       tableList: [],
-      alarmId: '',
-      timerList: []
+      timerList: [],
+      idList: [],
+      greeting: 'hi'
     }
   },
   methods: {
     ...mapMutations('Alarm', ['changeCurrentCheckAlarmIdList']),
-    handleCheck () {
+    hanldeSayHello (greeting) {
+      this.greeting = greeting;
+    },
+    async handleCheck () {
       this.primaryId += 1
+
+      // 2.4
+      const name = await alarmApi.fetchAlarmDetail();
+
       const obj = {
-        id: this.primaryId
+        id: this.primaryId,
+        name
       }
       this.$alarm(obj);
+      this.idList.unshift(this.primaryId)
       this.tableList.push(obj);
-      this.alarmId = obj.id;
-      if (this.currentCheckAlarmIdList.length > 3) {
-          this.removeAlarmRealtime();
+      if(this.idList.length > 1) {
+        this.removeAlarmRealtime();
       }
+      // if (this.currentCheckAlarmIdList.length > 3) {
+      //     this.removeAlarmRealtime();
+      // }
       this.controlTimer();
     },
     controlTimer () {
-      if (this.currentCheckAlarmIdList.length <= 0) {
-          return false;
-      }
+      // if (this.currentCheckAlarmIdList.length <= 0) {
+      //     return false;
+      // }
       const timer = setTimeout(() => {
           this.removeAlarmRealtime();
-      }, 60000);
+      }, 3000);
       this.timerList.unshift(timer);
-      if (this.timerList.length > 3) {
+      if (this.timerList.length > 1) {
           const timer = this.timerList.pop();
           clearTimeout(timer);
       }
     },
     removeAlarmRealtime () {
-      const id = this.currentCheckAlarmIdList.pop();
-      this.changeCurrentCheckAlarmIdList({ show: false, id });
+      const id = this.idList.pop();
+      // this.changeCurrentCheckAlarmIdList({ show: false, id });
       const el = document.getElementById(`rt${id}`);
       setTimeout(() => {
           el.remove();
