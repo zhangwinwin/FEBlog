@@ -11,6 +11,7 @@
   "dependencies": {
     "compression-webpack-plugin": "^7.1.1",
     "core-js": "^3.6.5",
+    "flush-promises": "^1.0.2",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
     "sass-resources-loader": "^2.1.1",
