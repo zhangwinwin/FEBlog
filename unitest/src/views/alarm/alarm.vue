@@ -5,7 +5,7 @@
                 <img src="" alt="" class="normal">
                 <div class="info">
                     <div class="type flex">
-                        <p class="typeName">智能报警</p>
+                        <p class="typeName">{{alarmItem.name}}智能报警</p>
                         <div class="checkBtn">查看</div>
                     </div>
                 </div>
