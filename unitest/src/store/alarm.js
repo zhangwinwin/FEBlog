@@ -1,7 +1,9 @@
+import { fetchAlarmDetail } from '../api/alarmApi'
 export const Alarm = {
   namespaced: true,
   state: {
     currentCheckAlarmIdList: [],
+    alarmName: ''
   },
   mutations: {
     changeCurrentCheckAlarmIdList (state, data) {
@@ -10,6 +12,16 @@ export const Alarm = {
       } else {
           state.currentCheckAlarmIdList = state.currentCheckAlarmIdList.filter(item => item !== data.id);
       }
-  }
+    },
+    changeAlarmName (state, data) {
+      state.alarmName = data;
+    },
+  },
+  actions: {
+    fetchAlarmName ({commit}) {
+      return fetchAlarmDetail().then(res => {
+        commit('changeAlarmName', res)
+      })
+    }
   }
 }

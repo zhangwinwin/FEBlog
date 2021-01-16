@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import * as alarmApi from '@/api/alarmApi.js';
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
@@ -29,13 +29,19 @@ export default {
       tableList: [],
       timerList: [],
       idList: [],
-      greeting: 'hi'
+      greeting: 'hi',
+      alarmName: ''
     }
   },
   methods: {
     ...mapMutations('Alarm', ['changeCurrentCheckAlarmIdList']),
     hanldeSayHello (greeting) {
       this.greeting = greeting;
+    },
+    async handleAlarmName () {
+      this.$store.dispatch('Alarm/fetchAlarmName').then(res => {
+        this.alarmName = res;
+      })
     },
     async handleCheck () {
       this.primaryId += 1
