@@ -57,13 +57,15 @@ Vue: 8篇
 [OAuth2.0与前端无感知token刷新实现](https://github.com/zhangwinwin/FEBlog/blob/master/blog/33.md)  
 [后端API接口的错误信息返回规范](https://github.com/zhangwinwin/FEBlog/blob/master/blog/34.md)  
 [六种设计难题的CSS实用技巧！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/35.md)  
-[一文弄清“缓存”](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md)  
+[一文弄清“缓存”](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md) 
+[一道“作用域”题引发的思考](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md) 
 
 ## ES6+
 [温故而知新ES6篇-符号与可迭代对象](https://github.com/zhangwinwin/FEBlog/blob/master/blog/38.md)
 
 ## 单元测试
 [VUE单元测试--开启测试之旅](https://github.com/zhangwinwin/FEBlog/blob/master/blog/39.md)
+[VUE单元测试进阶](https://github.com/zhangwinwin/FEBlog/blob/master/blog/40.md)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)  
