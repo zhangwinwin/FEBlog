@@ -64,8 +64,9 @@ Vue: 8篇
 [温故而知新ES6篇-符号与可迭代对象](https://github.com/zhangwinwin/FEBlog/blob/master/blog/38.md)
 
 ## 单元测试
-[VUE单元测试--开启测试之旅](https://github.com/zhangwinwin/FEBlog/blob/master/blog/39.md)
-[VUE单元测试进阶](https://github.com/zhangwinwin/FEBlog/blob/master/blog/40.md)
+[VUE单元测试--开启测试之旅](https://github.com/zhangwinwin/FEBlog/blob/master/blog/39.md)  
+[VUE单元测试进阶](https://github.com/zhangwinwin/FEBlog/blob/master/blog/40.md)  
+[VUE单元测试--TERMINAL](https://juejin.cn/editor/drafts/6921569252528881672)
 
 ## JavaScript基础知识
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)  
