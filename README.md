@@ -59,7 +59,8 @@ Vue: 8篇
 [六种设计难题的CSS实用技巧！](https://github.com/zhangwinwin/FEBlog/blob/master/blog/35.md)  
 [一文弄清“缓存”](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md) 
 [一道“作用域”题引发的思考](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md)  
-[【思考篇🤔】一个CSS实现引发的思考 ](https://juejin.cn/post/6924835971129311240)
+[【思考篇🤔】一个CSS实现引发的思考 ](https://juejin.cn/post/6924835971129311240)  
+[8个有点优秀的CSS实践](https://juejin.cn/post/6934887428616355847)
 
 ## ES6+
 [温故而知新ES6篇-符号与可迭代对象](https://github.com/zhangwinwin/FEBlog/blob/master/blog/38.md)
