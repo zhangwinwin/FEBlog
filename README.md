@@ -60,7 +60,8 @@ Vue: 8篇
 [一文弄清“缓存”](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md) 
 [一道“作用域”题引发的思考](https://github.com/zhangwinwin/FEBlog/blob/master/blog/36.md)  
 [【思考篇🤔】一个CSS实现引发的思考 ](https://juejin.cn/post/6924835971129311240)  
-[8个有点优秀的CSS实践](https://juejin.cn/post/6934887428616355847)
+[8个有点优秀的CSS实践](https://juejin.cn/post/6934887428616355847)  
+[canvas动画--一只在蓝天白云下奔跑在草丛中的🐶](https://juejin.cn/post/6984586772680278023)
 
 ## ES6+
 [温故而知新ES6篇-符号与可迭代对象](https://github.com/zhangwinwin/FEBlog/blob/master/blog/38.md)
@@ -74,6 +75,16 @@ Vue: 8篇
 [<script>元素](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.md)  
 [基本概念](https://github.com/zhangwinwin/FEBlog/blob/master/blog/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.md)
 
+## WEBGL专栏
+[WebGL入门(一)：模型变换及其数学基础](https://juejin.cn/post/6950819358645944351)  
+[WebGL入门(二)：viewing变换及其数学基础](https://juejin.cn/post/6966027504943366151)  
+
+## Nginx
+[前端必备的Nginx知识](https://juejin.cn/post/6963437199811411975)
+
+## 函数式编程
+[深入浅出JavaScript函数式编程](https://juejin.cn/post/6971974298965655588)  
+[使用函数式编程来处理异常或错误](https://juejin.cn/post/6979033966107951117)
 ## 勘误及提问
 
 如果有疑问或者发现错误，可以在相应的 issues 进行提问或勘误。
