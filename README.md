@@ -78,6 +78,7 @@ Vue: 8篇
 ## WEBGL专栏
 [WebGL入门(一)：模型变换及其数学基础](https://juejin.cn/post/6950819358645944351)  
 [WebGL入门(二)：viewing变换及其数学基础](https://juejin.cn/post/6966027504943366151)  
+[WebGL入门(三)：使用VUE3编写WebGL程序](https://juejin.cn/post/6992023855384494116) 
 
 ## Nginx
 [前端必备的Nginx知识](https://juejin.cn/post/6963437199811411975)
