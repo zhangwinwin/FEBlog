@@ -53,7 +53,13 @@ module.exports = {
             { text: 'Webgl', link: '/webgl/' },
             { text: 'Frontend', link: '/frontend/' },
             { text: 'Network', link: '/network/' },
-            { text: 'github', link: 'https://github.com/zhangwinwin/FEBlog'}
+            { 
+                text: '博客地址', 
+                items: [
+                    { text: 'Github', link: 'https://github.com/zhangwinwin/FEBlog' },
+                    { text: '掘金', link: 'https://juejin.cn/user/1486195453331757' }
+                ]
+            }
         ]
     }
 }
