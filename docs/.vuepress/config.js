@@ -14,6 +14,7 @@ const frontend = fs.readdirSync(frontendFolder).filter(md => md !== 'README.md')
 const network = fs.readdirSync(networkFolder).filter(md => md !== 'README.md')
 
 module.exports = {
+    base: '/FEBLog/',
     title: "zhangwinwin's blog",
     description: 'some technical articles on programming, especially webgl',
     head: [
