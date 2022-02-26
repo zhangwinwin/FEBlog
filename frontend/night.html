@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>熟悉而陌生API：Promise | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/17.a3bff097.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>ECMAScript6发布到现在差不多有5年时间了。在这5年时间里ES6摧枯拉朽般的将现代前端“改朝换代”，Promise是其中“大将”般的存在，影响着无数的前端库和API。可以这么说，Promise已经是现代前端的“血液”。</p> <p>尽管经过5年的日日夜夜，尽管书写过数不尽的Promise。面对着这个时而让我们感到真棒，用的舒服、时而坑得我们踉踉跄跄的API，我们真的了解它吗？</p> <h2 id="陌生情景一-怎么和循环结合">陌生情景一：怎么和循环结合</h2> <p>相信许多开发者最开始对Promise感到陌生的情景就是：不知道怎么跟循环结合使用。
+例如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 我想将数组下的每个元素都执行一个函数
+fetchSomeData().then((res) =&gt; {
+    res.data.forEach((item) =&gt; {
+        doSomethingFunction(item);
+    })
+}).then(res =&gt; {
+    // 做其他事
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>这个例子有什么问题呢？</p> <p>问题在于：第一个then回调函数返回的是undefined，就是说第二个then函数并没有等doSomethingFunction(item);执行完。事实上，它并不需要等待任何事情，并且可以在doSomethingFunction(item);执行了几个后执行。</p> <p>这是一个非常隐蔽的错误，因为如果res.data足够小或者doSomethingFunction()执行的足够快，可能就不会发现任何问题。</p> <p>如何解决？需要用到Promise.all()。</p> <h3 id="promise-all">Promise.all()</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>fetchSomeData().then(res) =&gt; {
+    return Promise.all(res.data.map(item) =&gt; {
+        return doSomethingFunction(item);
+    })
+}).then(res =&gt; {
+    // 做其他事
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>Promise.all接收一个Promise对象组成的数组作为参数，当这个数组所有的Promise对象状态都变成resolved或者rejected的时候，它才会去调用then方法。</p> <h2 id="陌生情景二-没有return">陌生情景二：没有return</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>fetchSomeData().then((res) =&gt; {
+    doSomethingFunction(res);
+}).then(res =&gt; {
+    // 做其他事
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>这个例子的问题在于第二个then函数获取的是undefined。使用了side effect去改变而不是返回。</p> <p>每一个Promise都有一个then方法，我们能在then方法中做三件事情：</p> <ul><li>return 另一个Promise</li> <li>return 一个值</li> <li>throw 一个错误</li></ul> <h3 id="返回一个promise">返回一个Promise</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>fetchSomeData().then((res) =&gt; {
+    return getId(res);
+}).then(res =&gt; {
+    // 我能得到id
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>使用return 返回第二个Promise，在第二个then方法中就能得到id。如果没有return，那么getId()只是一个side effect，那么第二个then方法只能得到undefined。</p> <h3 id="返回一个值">返回一个值</h3> <p>比如说要对id做一个缓存处理，以降低运行时间。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>fetchSomeData().then((res) =&gt; {
+    if (idCache[id]) {
+        return idCache[id];
+    }
+    return getId(res);
+}).then(res =&gt; {
+    // 我能得到id
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>不管id是缓存中的，还是异步去获取的，都能返回正确的。</p> <h3 id="throw-error">throw error</h3> <p>throw error能让Promise变得更严谨。如果要在用户登出的时候做错误处理：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>fetchSomeData().then((res) =&gt; {
+    if (logout) {
+        throw new Error('用户已登出')；
+    }
+    if (idCache[id]) {
+        return idCache[id];
+    }
+    return getId(res);
+}).then(res =&gt; {
+    // 我能得到id
+}).catch(err=&gt; {
+    // 做错误处理
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>catch方法能获取得到错误。</p> <h2 id="陌生情景三-不知道promise-resolve-与promise-reject">陌生情景三：不知道Promise.resolve()与Promise.reject()</h2> <p>如果经常写出下面内容：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>new Promise((resolve, reject) =&gt; {
+    resolve(doSomething())
+}).then(...)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>其实就是对Promise不熟悉，可以用更简短的语句去表达</p> <h3 id="promise-resolve">Promise.resolve</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Promise.resolve(doSomething()).then(...)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>同样Promise.reject()可以返回立即被拒绝的Promise</p> <h3 id="promise-reject">Promise.reject</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Promise.reject(new Error('some error'))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="陌生情景四-then-catch-与then-resolvehandler-rejecthandler-傻傻分不清楚">陌生情景四：then().catch()与then(resolveHandler, rejectHandler)傻傻分不清楚</h2> <p>其实catch方法是then(null, function(err) {})的语法糖</p> <p>下面这两段代码是相等的</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>promise().catch(err =&gt; {
+    // 处理错误
+})
+
+promise().then(null, err =&gt; {
+    // 处理错误
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>但并不意味着下面这两段代码是相等的</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>promise().then((res) =&gt; {
+    return otherPromise(res);
+}).cathc(err =&gt; {
+    // 能捕获得到错误
+})
+
+promise().then(res =&gt; {
+    return otherPromise(res);
+}, err =&gt; {
+    // 不能捕获得到错误
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>所以，当使用then(resolveHandler, rejectHandler)时，如果它本身发生错误，rejectHandler是不会捕获得到的。</p> <p>出于这个原因，捕获错误尽量使用catch方法。</p> <h2 id="陌生情景五-如何依次执行一系列的promise">陌生情景五：如何依次执行一系列的promise</h2> <p>如果要执行一系列的promise，类似Promise.all()方法，但不会并行执行。可能会写出下面的代码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function execute(promises) {
+    var result = Promise.resolve();
+    promise.forEach(promise =&gt; {
+        result = result.then(promise);
+    });
+    return result;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>不幸的是，这无法按照预期去执行，仍然是并行执行的。</p> <p>发生这种情况的原因是：预期是不希望对一系列的promise进行操作。但是根据promise规范，一旦创建了promise，它就会开始执行。</p> <p>因此要用到promise工厂函数</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function execute(promiseFactories) {
+    var result = Promise.reslove();
+    promiseFactories.forEach(promiseFactory =&gt; {
+        result = result.then(promiseFactory);
+    });
+    return result;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>promise工厂函数非常简单，只是一个返回promise的函数</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function promiseFactory() {
+    return promiseCreated();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>这种方法之所以会有效，是因为promise工厂函数直到被调用时才创建promise。它与then函数的工作方式相同</p> <h2 id="陌生情景六-then方法的使用">陌生情景六：then方法的使用</h2> <p>你认为下面代码的输出是什么？</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Promise.resolve('foo').then(Promise.resolve('bar')).then((res) =&gt; {
+    console.log(res);
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>如果你认为输出bar，那就错了。实际上输出的是foo！</p> <p>因为当传递给then()方法并非是一个函数时，它实际上执行then(null)，这样先前的promise结果就无法传给第二个then方法。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Promise.resolve('foo').then(null).then(res =&gt; {
+    console.log(res) // foo
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>简而言之，可以将promise直接传给then方法，但它并不会按照你的预期去执行。所以你要这样做</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Promise.resolve('foo').then(() =&gt; {
+    return Promise.resolve('bar')
+}).then(res =&gt; {
+    console.log(res); // bar
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>因此，请提醒自己：始终要将函数传递给then方法</p> <h2 id="总结">总结</h2> <p>有人说：一回生二回熟。</p> <p>经历了上述这六回，相信对promise就像亲人一般的熟悉。</p> <p>上述文章是翻译、加工自<a href="https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html" target="_blank" rel="noopener noreferrer">We have a problem with promises<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/17.a3bff097.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>0.1+0.2===0.3?事情并没有那么简单 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/11.9d2c86e2.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>众所周知<code>JavaScript</code>中<code>0.1 + 0.2</code>是不等于<code>0.3</code>的，这非常容易求证。如下图，在<code>chrome</code>控制台中显示<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172ac883d2a9f626~tplv-t2oaga2asx-image.image" alt=""></p> <p>而且这似乎不是<code>JavaScript</code>的问题。</p> <p>在<code>java</code>中，输入<code>0.1 + 0.2</code>也是这个数，如下图：。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172ac8f9a57347e9~tplv-t2oaga2asx-image.image" alt=""></p> <p>那问题来了：为什么计算机计算<code>0.1+0.2</code>会不等于<code>0.3</code>呢？</p> <h2 id="浮点数的存储方式">浮点数的存储方式</h2> <p>想要弄清楚这个问题，首先得清楚浮点型在计算机中是如何存储的。</p> <p>1、浮点数转换成二进制，并采用科学计数法表示。<br>
+2、浮点型的存储实现是按照<code>IEEE754</code>标准的，可分为两种：</p> <ul><li>单精度--32位</li> <li>双精度--64位</li></ul> <h3 id="单精度浮点型存储">单精度浮点型存储</h3> <p>单精度浮点型存储，举个例子：<br>
+在十进制中，<code>0.75</code>用科学计数法可以表示为<code>7.5 * 10^-1</code>，同样在二进制中，<code>0.75</code>可以表示为：<br> <code>0.75 = 1.1 * 2^-1</code><br>
+即：<br> <code>0.75 = （1 * 2^0 + 1 * 2^-1）* 2 ^-1</code><br>
+其中幂次方-1用阶码表示，而基数1.1由于二进制整数部分都是1，所以去掉1留下0.1作为尾数部分（因为都是1点多的形式，所以没有必要存放1）。因此0.75在单精度浮点数是这样表示的：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172aca82d31a186b~tplv-t2oaga2asx-image.image" alt=""></p> <p>阶码要加上一个基数，这个基数为<code>2^(n-1) -1</code>，n为阶码的位数，32位的阶码位是8位，所以这个基数为127，8位阶码能表示的最小整数位0，最大整数位255，所以能表示的指数范围为：<code>-127~128</code>，上面要表示的指数为-1，需要加上基数127，就变成126，如上图所示。</p> <p>而尾数为0.1，所以尾数的最高位为1，后面的值填充0。<br>
+反过来，如果知道一个二进制的存储方式，同样地可以转换成10进制，如上结果为：<br> <code>(1 + 1 * 2^-1) * 2^(126 - 127) = 1.5 * 2^-1 = 0.75</code></p> <p>那么按照上面的理论，在二进制中0.1又该如何表示呢？</p> <p>0.1无法被表示为这种方式，就像1/3无法在十进制中精确表示一样，在二进制中只能是用一个数尽可能的接近0.1。</p> <h3 id="双精度浮点型存储">双精度浮点型存储</h3> <p><code>JavaScript</code>的<code>Number</code>类型使用的是双精度浮点型，也就是C语言中的<code>double</code>类型。</p> <p>因为C语言能够读取原始的内存信息，所以用C语言看看在双精度浮点型中0.1存储成什么样。(代码来自这<a href="https://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format" target="_blank" rel="noopener noreferrer">Is there a printf converter to print in binary format?<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+
+void printBits(size_t const size, void const * const ptr)
+{
+    unsigned char *b = (unsigned char*) ptr;
+    unsigned char byte;
+    int i, j;
+
+    for (i=size-1;i&gt;=0;i--)
+    {
+        for (j=7;j&gt;=0;j--)
+        {
+            byte = (b[i] &gt;&gt; j) &amp; 1;
+            printf(&quot;%u&quot;, byte);
+        }
+    }
+    puts(&quot;&quot;);
+}
+int main (void)
+{
+	double a = 0.1;
+    printBits(sizeof(a), &amp;a);
+  	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>结果如下图所示：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172acdaeca49fd4c~tplv-t2oaga2asx-image.image" alt=""></p> <p>双精度浮点数用11位表示阶码，52位表示尾数，如图所示
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/15/172b84c3f9d764b9~tplv-t2oaga2asx-image.image" alt=""></p> <p>所以双精度的阶码基数为<code>2^10 - 1 = 1023</code>，0.1的阶码为<code>01111111011</code>，等于十进制1019，所以它的指数为-4，尾数约等于0.6
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172ace3fac93ab26~tplv-t2oaga2asx-image.image" alt=""></p> <p>有了这个尾数再乘上指数，如图所示
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/6/13/172ace93e9cef0e7~tplv-t2oaga2asx-image.image" alt=""></p> <p>也就是说0.1的实际存储要比0.1大。<br>
+0.2和0.1的区别在于0.2比0.1的阶码大了1，其他完全一样，也就是说0.2的实际存储也是偏大的。</p> <p>所以0.1 + 0.2是大于0.3！</p> <h2 id="解决方法">解决方法</h2> <p>解决方法有很多种，比如<code>mathjs</code>库、<code>decimal.js</code>等。这些库都很好的解决这个问题。</p> <p>但如果只是涉及到比较简单的浮点型相加而去引用第三方库，无疑是用大炮打蚊子。</p> <h3 id="tofixed">toFixed</h3> <p>在<code>JavaScrip</code>t原生方法中提供了一个方法：<code>Number.prototype.toFixed()</code></p> <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="noopener noreferrer">toFixed()<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>方法使用定点表示法来格式化一个数</p> <p>语法如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>numObj.toFixed(digits)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>其中参数digits是小数点后数字的个数：介于0到20之间。</p> <p>返回的是一个数值的字符串形式，所以需要将结果强制转换为浮点型。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>parseFloat((0.1 + 0.2).toFixed(10))//结果为0.3
+parseFloat((0.3 / 0.1).toFixed(10)) // 结果为 3  
+parseFloat((0.7 * 180).toFixed(10))//结果为126
+parseFloat((1.0 - 0.9).toFixed(10)) // 结果为 0.1   
+parseFloat((9.7 * 100).toFixed(10)) // 结果为 970 
+parseFloat((2.22 + 0.1).toFixed(10)) // 结果为 2.32
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="总结">总结</h2> <p>计算机中使用<code>IEEE754</code>标准实现的浮点型存储都会有这个问题：用二进制来存储小数，而大部分小数转成二进制之后都是无限循环的值，因此存在取舍问题，也就是精度丢失。从而使得<code>0.1 + 0.2 !== 0.3</code>。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/11.9d2c86e2.js" defer></script>
+  </body>
+</html>

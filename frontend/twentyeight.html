@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VUE单元测试--进阶之路 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/38.ebd67282.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>全方位的介绍如何使用<code>JEST</code>测试一个VUE组件。<br>
+（如果不知道怎么开始<code>VUE</code>单元测试的同学们，请查看之前的文章<a href="https://juejin.cn/post/6906295144505409549" target="_blank" rel="noopener noreferrer">VUE单元测试--开启测试之旅<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）</p> <p>着重介绍在使用<code>Vue.extend</code>创建构造函数的形式注册的组件，包括：</p> <ul><li>测试定时器函数</li> <li>测试<code>HTTP</code>请求</li> <li>测试事件
+等这几个部分的介绍</li></ul> <p>代码在<a href="https://github.com/zhangwinwin/FEBlog/tree/master/unitest" target="_blank" rel="noopener noreferrer">github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>欢迎点赞👍</p> <h2 id="测试组件">测试组件</h2> <p>测试组件，其实就是测试组件的方法以及方法所依赖的模块。<br>
+测试组件方法很简单：调用组件方法并断言方法能用正确地影响了组件的输出即可。</p> <p>从一个例子出发，测试一个进度条组件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;Progress-Bar&quot; :class=&quot;{hidden: hidden}&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'ProgressBar',
+  data () {
+    return {
+      hidden: true
+    }
+  },
+  methods: {
+    start () {
+      this.hidden = false;
+    },
+    finally () {
+      this.hidden = true;
+    }
+  },
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>代码一目了然，当调用<code>start</code>方法时，应该展示进度条；当调用<code>finally</code>方法时，应该屏蔽进度条。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { shallowMount } from '@vue/test-utils';
+import ProgressBar from '@/views/ProgressBar.vue';
+
+describe('test progress', () =&gt; {
+  it('when start is clicked, show the progressBar', () =&gt; {
+    const wrapper = shallowMount(ProgressBar);
+    expect(wrapper.classes()).toContain('hidden');
+    wrapper.vm.start();
+    wrapper.vm.finally();
+    expect(wrapper.classes()).toContain('hidden');
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>运行<code>yarn test:unit</code>时，测试通过。</p> <p>这是简单的组件测试。</p> <h3 id="vue实例添加属性">Vue实例添加属性</h3> <p>事实上还有一种非常常见的组件模式，就是往<code>Vue</code>实例添加属性。在之前的文章中也介绍过，用这<a href="https://juejin.cn/post/6893303835251441677" target="_blank" rel="noopener noreferrer">VUE的“动态”案例<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>介绍的组件来做例子，组件的具体开发就不多作介绍了，代码在代码在<a href="https://github.com/zhangwinwin/FEBlog/tree/master/unitest" target="_blank" rel="noopener noreferrer">github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中。<br>
+（进入到<code>unitest</code>文件夹中，运行<code>yarn serve</code>。）</p> <p>功能：点击按钮触发<code>handleCheck</code>事件，弹出<code>alarm</code>弹窗，弹窗<code>id</code>就是在<code>primaryId</code>基础上增加1。<br>
+测试用例如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>describe('test alarm', () =&gt; {
+  it('when handleCheck is clicked, show the alarm', () =&gt; {
+    const wrapper = shallowMount(Home);
+    const count = wrapper.vm.primaryId;
+    wrapper.vm.handleCheck();
+    const newCount = wrapper.vm.primaryId;
+    expect(newCount).toBe(count + 1)
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>运行<code>yarn test:uni</code>时会发生错误
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/512eb096fd1844b49c8900c436e0f67e~tplv-k3u1fbpfcp-watermark.image" alt=""></p> <p>这是因为在测试中直接挂载了组件，而这个组件实例是使用<code>Vue.extend</code>函数创建的，并在<code>main.js</code>引入和添加到<code>Vue</code>的原型中的。换而言之，<code>main.js</code>并没有被执行，这个组件就没有被创建，<code>$alarm</code>属性就永远不会被添加。
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/696f8ef28fe34eeb940d479d2a28e1a1~tplv-k3u1fbpfcp-watermark.image" alt=""></p> <p>这时需要在加载组件到测试之前先为<code>Vue</code>实例添加属性。可以使用<code>mocks</code>来实现。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>shallowMount(Home, {
+  mocks: {
+    $alarm: () =&gt; {}
+  }
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>再次运行<code>yarn test:uni</code>时就完美的通过了。</p> <h3 id="测试定时器函数">测试定时器函数</h3> <p>定时器函数包括<code>JavaScript</code>异步函数都是前端中常见的功能，所以都需要测试对应的代码。但肯定不是等待定时器函数走完，需要使用<code>Jest.useFakeTimers</code>替换全局定时器函数，替换后可以使用<code>runTimersToTime</code>推进时间。</p> <h4 id="测试settimeout">测试setTimeout</h4> <p>功能：<code>handleCheck</code>事件触发后，会将<code>alarm</code>组件<code>id unshift</code>到<code>idList</code>数组中，弹出3秒后组件就会被销毁，<code>idList</code>也会将其<code>id</code>给删除掉。<br>
+测试用例如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>it('when handleCheck is clicked, 3second later alarm would be disappeared', () =&gt; {
+  // 测试之前，替换全局定时函数
+  jest.useFakeTimers();
+  const wrapper = shallowMount(Home, {
+    mocks: {
+      $alarm: () =&gt; {}
+    }
+  });
+  wrapper.vm.handleCheck();
+  expect(wrapper.vm.idList.length).toBe(1);
+  // 将时间推进3000毫秒
+  jest.runTimersToTime(3000);
+  expect(wrapper.vm.idList.length).toBe(0);
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h4 id="测试cleartimeout">测试clearTimeout</h4> <p>功能：当<code>alarm</code>弹窗超过一个的时候，就会调用<code>clearTimeout</code>销毁前一个的<code>timer</code>。这时就要监听<code>clearTimeout</code>是否被调用。</p> <p>使用<code>Jest.spyOn</code>函数创建一个<code>spy</code>，可以使用<code>toHaveBeenCalled</code>匹配器来检测<code>spy</code>是否被调用，更进一步地可以使用<code>toHaveBeenCalledWith</code>匹配器测试<code>spy</code>是否带有指定参数被调用。</p> <p>所以在测试中，需要得到<code>setTimeout</code>的返回值，<code>Jest.mockReturnValue</code>可以实现这个需求。<code>mockReturnValue</code>可以将<code>setTimeout</code>的返回值设置为任何值，比如将返回值设置为123：<code>setTimeOut.mockReturnValue(123)</code><br>
+测试用例如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>it('when handleCheck is clicked and the number of alarm exceeds 1 , The previous alarm disappears immediately', () =&gt; {
+    // 监听clearTimeout
+    jest.spyOn(window, 'clearTimeout')
+    const wrapper = shallowMount(Home, {
+      mocks: {
+        $alarm: () =&gt; {}
+      }
+    });
+    // 设置setTimeout返回值为123
+    setTimeout.mockReturnValue(123)
+    wrapper.vm.handleCheck();
+    // 设置setTimeout返回值为456
+    setTimeout.mockReturnValue(456)
+    wrapper.vm.handleCheck();
+    expect(window.clearTimeout).toHaveBeenCalledWith(123)
+  })
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="测试模拟http请求">测试模拟HTTP请求</h3> <p><code>HTTP</code>请求不在单元测试范围，因为它会降低单元测试的速度；降低单元测试的可靠性，因为<code>HTTP</code>请求不会100%请求成功。所以需要在单元测试中模拟<code>api</code>文件，从而使得<code>fetchAlarmDetail</code>永远不会发送一个<code>HTTP</code>请求。</p> <p><code>Jest</code>提供了一个<code>API</code>，用于选择当一个模块导入另一个模块时返回哪些文件或函数。首先的创建一个<code>mock</code>文件，而不是直接在测试中引入真正的文件。</p> <p>在<code>api</code>目录中创建一个<code>__mocks__</code>目录，里面创建一个模拟的需要测试的<code>alarmApi</code>文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// src/api/__mocks__/alarmApi.js
+export const fetchAlarmDetail = jest.fn(() =&gt; Promise.resolve('人机'));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>然后在测试文件中加入</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// alarm.spec.js
+jest.mock('../../src/api/alarmApi.js');
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>调用<code>jest.mock('../../src/api/alarmApi.js')</code>后，当模块导入了<code>src/api/alarmApi.js</code>后，<code>Jest</code>将使用创建的<code>mock</code>文件而不是原文件。</p> <p>测试用例如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>it('fetch the alarm detail by http', async () =&gt; {
+  // 设置断言数量，如果一个promise被拒绝，测试会失败
+  expect.assertions(1);
+  const name = await alarmApi.fetchAlarmDetail();
+  expect(name).toBe('人机')
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>设置断言数量是在异步测试中非常常用的方法，因为这可以确保在测试结束前执行完所有断言。</p> <h4 id="在组件中调用http请求函数">在组件中调用HTTP请求函数</h4> <p>一般来说，<code>HTTP</code>请求是在组件中使用的，单独测试作用并不大。那么在组件中载入其他异步依赖，应该怎么去测试呢？</p> <p>首先在<code>home.vue</code>中导入请求文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import * as alarmApi from '@/api/alarmApi.js';
+
+// 在handleCheck中使用
+async handleCheck () {
+    // ...
+    const name = await alarmApi.fetchAlarmDetail();
+    // ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>当测试调用异步代码的时候，并不总是可以访问需要等待的异步函数。这意味着不能在测试中使用<code>await</code>来等待异步函数结束。</p> <p>这时可以使用<code>flush-promises</code>库来帮忙，它能等待异步函数结束。例如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let loading = true;
+Promise.resolve().then(() =&gt; {
+    loading = false;
+}
+await flushPromise();
+expect(loading).toBe(false)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>基于此，将之前的测试用例修改为：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 2.1
+  it('when handleCheck is clicked, show the alarm', async () =&gt; {
+    expect.assertions(1);
+    const wrapper = shallowMount(Home, {
+      mocks
+    });
+    const count = wrapper.vm.primaryId;
+    alarmApi.fetchAlarmDetail.mockImplementationOnce(() =&gt; Promise.resolve('人机'));
+    wrapper.vm.handleCheck();
+    await flushPromises();
+    const newCount = wrapper.vm.primaryId;
+    expect(newCount).toBe(count + 1)
+  })
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>加入一个<code>expect.assertions(1)</code>设置断言数量，设置<code>fetchAlarmDetail</code>函数的返回结果，最后调用<code>await flushPromises();</code>等待所有异步函数结束。（之后的测试用例修改，不再展开讨论，详情请看代码。）</p> <p>在命令行中输入<code>yarn test:uni</code> <img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cff34a12d99e428c9bb1d62160e7ea63~tplv-k3u1fbpfcp-watermark.image" alt=""></p> <h3 id="测试事件">测试事件</h3> <h4 id="测试dom事件">测试DOM事件</h4> <p>功能：点击一个按钮，触发一个<code>click</code>事件
+测试用例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>it('click the button then the $alarm will be called', () =&gt; {
+  const wrapper = shallowMount(Home, {
+    mocks
+  });
+  wrapper.find('button.check').trigger('click');
+  expect($alarm).toHaveBeenCalled();
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>每个包装器都有一个<code>trigger</code>方法，用于在包装器上分发一个事件。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 键盘事件
+wrapper.trigger('keydown.up')；
+wrapper.trigger('keydown', {
+  key: 'a'
+})
+// 鼠标事件
+wrapper.trigger('mouseenter')；
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="测试自定义事件">测试自定义事件</h4> <p><code>VUE</code>自定义事件是由带有<code>VUE</code>实例<code>$emit</code>方法的组件事件发射出去的。在子组件中发射一个事件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// son.vue
+this.$emit('eventName', payload);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在父组件中接收一个事件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// father
+&lt;son @eventName='handleEvent'&gt;&lt;/son&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>功能： 点击位于<code>HelloWorld</code>组件的<code>class</code>为<code>hello</code>的<code>button</code>元素，触发<code>sayHello</code>事件并携带<code>hello</code>。位于<code>Home</code>组件的<code>handleSayHello</code>触发，将<code>greeting</code>从<code>hi</code>变成<code>hello</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>it('click the check button, home.greeting will change to hello', () =&gt; {
+    const wrapper = shallowMount(Home);
+    wrapper.findComponent(Hello).vm.$emit('sayHello', 'hello');
+    expect(wrapper.vm.greeting).toBe('hello')
+  })
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/38.ebd67282.js" defer></script>
+  </body>
+</html>

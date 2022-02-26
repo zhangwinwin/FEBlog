@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>wireShark的基本用法 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/53.eb8ab9b1.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>wireShark可以说是迄今为止最为强大的抓包工具。<br>
+掌握好它对学习网络协议有巨大的帮助。</p> <p>下面是本人学习整理有关wireShare的基本用法：</p> <h2 id="捕获网络报文">捕获网络报文</h2> <p>首先打开wireShark，点击菜单栏上的捕获(catpure)-&gt;选项(options)，打开捕获接口窗口
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/1704782753e9cf90~tplv-t2oaga2asx-image.image" width="600"></p> <p>捕获接口窗口如下图所示：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/1704788dd87a08aa~tplv-t2oaga2asx-image.image" width="600"><br>
+需要关注4个部分：<br>
+1、接口：展示本机上的网络接口。比如Wi-Fi接口、Loopback接口就是本机的环回地址：如果是访问127.0.0.1或者localhost，应该选择该接口进行抓包。<br>
+2、输入与选项：下文有详细介绍<br>
+3、流量：展示当前的网卡接口中所经过的流量。<br>
+4、捕获过滤器：输入只想抓取的报文的格式</p> <p>输入(Output)<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/1704797cb3cba0b4~tplv-t2oaga2asx-image.image" width="600"><br>
+1、在抓包的时候，要么把报文存储到临时文件，要么存储到永久文件中。如果是永久文件，那么可以在文件(File)打开一个永久文件，输入格式(Output format)也是可以选择的。<br>
+2、如果是临时文件，可以点击自动创建文件(Create a new file automatically)。比如说，经过多少字节、经过多少秒就换一个新的文件等。<br>
+3、临时文件也可以用一个环形缓冲器(Use a ring buffer with)。比如说选择2个文件，就会循环使用这两个文件。当这两个文件都写好后，就重新使用第一个文件开始记录。</p> <p>选项(Options):
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047a0feadda865~tplv-t2oaga2asx-image.image" width="600"><br>
+主要关注两部分：<br>
+1、一些显示的选项。比如是否实时的更新分组列表等。<br>
+2、自动停止捕获。比如说经过多少字节、多少秒就停止捕获。</p> <p>点击开始(start)就可以抓取报文了。</p> <h3 id="wireshark面板">wireShark面板</h3> <p>抓取到报文后，来看一下wireShark面板功能：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047b3202bd994a~tplv-t2oaga2asx-image.image" width="600"><br>
+1、工具栏：通过4条竖线分为5类。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047c83de3b0a63~tplv-t2oaga2asx-image.image" width="600"><br>
+2、显示过滤器：展示只想展示的报文。<br>
+3、数据包列表：这其中有很多信息，比如有多少条报文，报文的获取时间，ip地址等。当点击其中一个数据包时就能在细节框中展示的细节。<br>
+其中报文的时间默认是相对时间：从开始捕获为0s计算。<br>
+可以在视图(view)-&gt;时间显示格式(Time Display Format)中转换。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047cce08d86feb~tplv-t2oaga2asx-image.image" width="600"><br>
+如果想对某一个报文为时间零点来设置相对时间，可以对着基准报文点击右键选择设置时间参考(Set/Unset Time Reference)
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047d30af133c32~tplv-t2oaga2asx-image.image" width="600"><br>
+数据包列表中的标记符号
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047dd404ffe1cf~tplv-t2oaga2asx-image.image" width="600"><br>
+4、数据包细节：有一个分层的概念。</p> <ul><li>Frame是wireShark自己的分层</li> <li>Ethernet表示以太网</li> <li>Internet Protocol表示网络层</li> <li>Transmission Control Protocol表示传输层。</li></ul> <p>点击对应的层会有对应的细节。<br>
+5、数据包字节流：可以看到左边的字节流对应着右边解析过的信息。</p> <h3 id="追踪流">追踪流</h3> <p>wireShark提供了一个便捷方式使得可以从如此庞大的数据报文中找到自己感兴趣的报文会话：追踪流<br>
+比如选择感兴趣的报文，点击右键选择追踪流(Follow)-&gt;TCP流
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047e378a75d40d~tplv-t2oaga2asx-image.image" width="600"><br>
+就能筛选出感兴趣的会话, 实际上这个操作与在显示过滤器中输入tcp.stream eq 12是一样的。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/17047e920cf9ae0c~tplv-t2oaga2asx-image.image" width="600"></p> <h2 id="捕获过滤器">捕获过滤器</h2> <p>捕获过滤器又称BPF过滤器。</p> <ul><li>Berkeley Packet Filter，在设备驱动级别提供抓包过滤接口，多数抓包工具都支持此语法</li> <li>expression表达式：由多个原语组成。</li></ul> <p>所以只需搞清楚原语就能知道过滤器的用法。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>原语(primitives)：由名称或数字，以及描述它的多个限定词组成。  
+  * 限定词(qualifiers)
+    * Types：设置数字或者名称所指示类型，例如host www.baidu.com
+        * host、post
+        * net，设定子网， net 192.168.0.0 mask 255.255.255.0等价于net 192.168.0.0/24
+        * portrange，设置端口范围，例如portrange 6000-8000
+    * Dir：设置网络出入方向，例如dst port 80
+        * src、dst、src or dst、src and dst(src：源端口，dst：目标端口)
+    * Proto：指定协议类型，例如upd
+        * ether、fddi、tr、wlan、ip、ip6、arp、rarp、decnet、tcp、udp、icmp、igmp、icmp、igrp、pim、ah、esp、vrrp
+    * 其他
+        * gateway：指明网关IP地址，等价于ether host 'ehost' and not host 'host'
+        * broadcast：广播报文，例如ether broadcast或者ip broadcast
+        * multicast：多播报文，例如ip multicast或者ip6 multicast
+        * less、greater：小于或者大于
+  * 原语运算符
+    * 与：&amp;&amp;或者and
+    * 或：||或者or
+    * 非：!或者not
+举例：src or dst portrange 6000-8000 &amp;&amp; tcp or ip6
+表示的意思就是源端口或者目的端口范围6000到8000，并且是一个tcp协议或者ipv6
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h2 id="显示过滤器">显示过滤器</h2> <p>捕获过滤器格式可以应用到很多软件，而显示过滤器只能应用于wireShark。</p> <p>显示过滤器的功能同样也是非常强大的，这就意味着学习成本不低啊。</p> <p>首先得找到显示过滤器支持哪些属性？<br>
+一般来说任何报文细节面板中解析出的字段名，都可以作为过滤属性。<br>
+比如说这个Source Post
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/170480bdb35414a5~tplv-t2oaga2asx-image.image" width="600"><br>
+但是作为过滤属性的名称可不是这样。这个Source Post对应的是tcp.srcpost。</p> <p>打开视图(view)-&gt;内部(internals)-&gt;支持的协议(Supported Protocols)
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/170480efbe43cd99~tplv-t2oaga2asx-image.image" width="600"><br>
+找到名称所对应的过滤器属性<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/1704817c13b2bd43~tplv-t2oaga2asx-image.image" width="600"></p> <h3 id="过滤属性比较符号">过滤属性比较符号</h3> <table><thead><tr><th>英文</th> <th>符号</th> <th>描述及示例</th></tr></thead> <tbody><tr><td>eq</td> <td>==</td> <td>等于.ip.src == 10.0.0.5</td></tr> <tr><td>ne</td> <td>!=</td> <td>不等于.ip.src!=10.0.0.5</td></tr> <tr><td>gt</td> <td>&gt;</td> <td>大于.frame.len &gt; 10</td></tr> <tr><td>lt</td> <td>&lt;</td> <td>小于.frame.len &lt; 128</td></tr> <tr><td>ge</td> <td>&gt;=</td> <td>大于等于.frame.len ge 0x100</td></tr> <tr><td>le</td> <td>&lt;=</td> <td>小于等于.frame.len le 0x20</td></tr> <tr><td>contains</td> <td></td> <td>包含.sip.To contains 'a1763'</td></tr> <tr><td>matches</td> <td>~</td> <td>正则匹配.host matches 'acme.(org)'</td></tr> <tr><td>bitwise_and</td> <td>&amp;</td> <td>位与操作.tcp.flags &amp; 0x02</td></tr></tbody></table> <h3 id="过滤属性类型">过滤属性类型</h3> <ul><li>Unsigned integer：无符号整型，例如ip.len le 1500</li> <li>Signed integer：有符号整型</li> <li>Boolean：布尔值，例如tcp.flags.syn</li> <li>Ethernet address：以:、-或者.分隔的6字节地址，例如eth.dst == ff:ff:ff:ff:ff</li> <li>IPv4 address：例如ip.addr == 192.168.0.1</li> <li>IPv6 address: 例如ipv6.addr == ::1</li> <li>Test string：例如http.request.uri == 'https://www.wireshark.org/'</li></ul> <h3 id="多个表达式间的组合">多个表达式间的组合</h3> <table><thead><tr><th>英文</th> <th>符号</th> <th>意义与示例</th></tr></thead> <tbody><tr><td>and</td> <td>&amp;&amp;</td> <td>AND逻辑与.ip.src == 10.0.0.5 and tcp.flags.fin</td></tr> <tr><td>or</td> <td></td> <td></td></tr> <tr><td>xor</td> <td>^^</td> <td>XOR逻辑异或.tr.dst[0:3] == 0.6.29 xor tr.src[0:3] == 0.6.29</td></tr> <tr><td>nor</td> <td>!</td> <td>NOT逻辑非 not llc</td></tr> <tr><td>[...]</td> <td></td> <td>Slice切片操作符</td></tr> <tr><td>in</td> <td></td> <td>集合操作符</td></tr></tbody></table> <h3 id="其他常用的操作符">其他常用的操作符</h3> <p>1、大括号{}集合操作符</p> <ul><li>例如tcp.port in {443 4430..4434},等价于tcp.port == 443 || (tcp &gt;= 4430 &amp;&amp; tcp.port &lt;= 4434)</li></ul> <p>2、中括号[]Slice切片操作符</p> <ul><li>[n:m]表示n是起始偏移量，m是切片长度，例如eth.src[0:3] == 00:00:83</li> <li>[n-m]表示n是起始偏移量，m是截止偏移量，例如eth.src[1-2] == 00:83</li> <li>[:m]表示从开始到m截止偏移量，例如eth.src[:4] == 00:00:83:00</li> <li>[m:]表示m是起始偏移量，到字段末尾，例如eth.src[4:] == 20:20</li> <li>[m]表示取偏移量m处的字节，例如eth.src[2] == 83</li> <li>[,]使用逗号分隔时，允许以上方式同时出现</li></ul> <p>这么多知识难以记住怎么办，别担心。wireShark提供了一个显示过滤器的可视化表达式框<br>
+打开分析(Analyze)-&gt;显示过滤器表达式(Display Filter Expression)<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/170483df7c5312e2~tplv-t2oaga2asx-image.image" width="600"><br>
+具体操作如下<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/15/1704840ef1a0dca0~tplv-t2oaga2asx-image.image" width="600"></p> <h2 id="解密tls消息">解密tls消息</h2> <p>最后分享一下wireshark解密TLS消息的方法。</p> <p>原理：通过Chrome浏览器DEBUG日志中的握手信息生成密钥。</p> <p>步骤：</p> <ul><li>配置Chrome输出DEBUG日志</li> <li>在wireshark中配置解析DEBUG日志</li></ul> <p>在mac下操作方法：</p> <ul><li>首先创建output文件用于接收DEBUG日志，比如<code>/Users/username/sslkeylogs/output.log</code></li> <li>然后配置环境变量SSLKEYLOGFILE：<code>export SSLKEYLOGFILE=/Users/username/sslkeylogs/output.log</code></li> <li>配置wireshark，在首选项中选择protocol-&gt;ssl，选择output文件</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/53.eb8ab9b1.js" defer></script>
+  </body>
+</html>

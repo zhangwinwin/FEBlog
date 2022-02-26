@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>断点续传与多线程下载 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/59.fd6482f8.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>当下载电影时，我常常会想中断下载后，为什么点击开始时会在中断的地方继续下载呢？<br>
+又或者在看在线电影时，为什么可以按着播放条拖动就能看到想看的片段呢？</p> <p>http的<strong>range</strong>请求将解决以上困惑。</p> <h2 id="多线程、断点续传、随机点播等的场景的步骤">多线程、断点续传、随机点播等的场景的步骤</h2> <p>1、客户端明确任务：从哪开始下载</p> <ul><li>本地是否已有部分文件：文件已下载部分在服务器端发生改变？</li> <li>使用几个线程并发下载</li></ul> <p>2、下载文件的指定部分内容<br>
+3、下载完毕后拼装成统一的文件</p> <h2 id="http-range规范">HTTP Range规范</h2> <p>在RFC7233中有详细介绍<br>
+1、允许服务器基于客户端的请求只发送响应包体的一部分给到客户端，而客户端自动将多个片段的包体组合成完整的体积更大的包体。</p> <ul><li>支持断点续传</li> <li>支持多线程下载</li> <li>支持视频播放器实时拖动</li></ul> <p>2、服务器通过Accept-Range头部表示是否支持Range请求</p> <ul><li>Accept-Ranges = acceptable-ranges</li> <li>例如:<br>
+Accept-Ranges: bytes: 支持；<br>
+Accept-Ranges: none: 不支持</li></ul> <h2 id="range请求范围的单位">Range请求范围的单位</h2> <p>基于字节为单位的时候，举例：设置响应体长度为10000</p> <ul><li>第1个500字节：<br>
+bytes=0-499 // 从0开始</li> <li>第2个500字节：<br>
+bytes=500-999<br>
+bytes=500-600, 601-999<br>
+bytes=500-700, 601-999</li> <li>最后1个500字节<br>
+bytes=-500<br>
+bytes=9500-</li> <li>仅要第一个和最后一个字节：bytes=0-0, -1</li></ul> <p>通过Range头部传递请求范围，如：Range: bytes=0-499</p> <h3 id="测试">测试</h3> <p>下面用一些小例子有测试一下。<br>
+用node搭了一个简单的服务器，返回的数字是22个字节的响应体</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>'Hello World 0123456789';
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>现在用curl命令获取全部的响应体，然后访问0-5的字节段：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/17024308e77fe71a~tplv-t2oaga2asx-image.image" width="500"></p> <p>-H参数添加 HTTP 请求的标头。<br>
+上面的命令就是添加HTTP头Range: bytes=0-5。<br>
+返回的是Hello (加上空格)一共六个字节。</p> <p>现在获取第21个字节及以后的字节段，就可以用20-：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/1702433d07573559~tplv-t2oaga2asx-image.image" width="500"><br>
+返回的是89</p> <h2 id="range条件请求">Range条件请求</h2> <ul><li>如果客户端已经得到了Range响应的一部分，并想在这部分响应未过期的情况下，获取其他部分的响应<br>
+常与If-Unmodified-Since或者If-Match头部共同使用</li> <li>If-Range = entity-tag / HTTP-date<br>
+可以使用Etag或者Last-Modified</li></ul> <h3 id="测试-2">测试</h3> <p>下面用etag测试一下Range条件请求</p> <p>首先获取0-5字节段<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/17024308e77fe71a~tplv-t2oaga2asx-image.image" width="500"></p> <p>然后用-I来看看生成Hello 时服务器生成Etag的值
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/170243fddd82ee8e~tplv-t2oaga2asx-image.image" width="500"></p> <p>接下来，用这个值放到If-Match中获取6-10字节段：World
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/1702442b74d27864~tplv-t2oaga2asx-image.image" width="500"></p> <p>如果Etag发生了变化，来看看结果会怎么样,将最后的0改为1
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/1702462dd88d06b5~tplv-t2oaga2asx-image.image" width="500"><br>
+返回412 Precondition Failed</p> <h3 id="结论">结论</h3> <p>通过条件请求可以判断两次下载之间，服务器端资源有没有发生变化。如果发生了变化，就可以通过412这个响应知道，资源已经发生了变化。</p> <h2 id="服务器响应">服务器响应</h2> <p>如果只获取部分的body，那么服务器端返回的响应码不是200，而是206。<br>
+206 Partial Content</p> <ul><li><p>Content-Range头部：显示当前片段响应体在完整包体中的位置</p></li> <li><p>Content-Range = byte-content-range / other-content-range<br>
+{ btye-content-range = bytes-unit SP (byte-range-resp / unsatisfied-range)<br>
+byte-range-resp = byte-range '/' (complete-length / '<em>')<br>
+complete-length = 1</em>DIGIT // 完整资源的大小，如果未知则用*号替代<br>
+bytr-range = first-byte-pos &quot;-&quot; last-byte-pos }</p></li> <li><p>例如：<br>
+1、Content-Range: bytes 42-1233/1234<br>
+2、Content-Range: bytes 42-1233/*</p></li></ul> <h3 id="测试-3">测试</h3> <p>用一个视频播放的例子来看看206响应的样子。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/17024f07e05e3dd8~tplv-t2oaga2asx-image.image" alt=""></p> <p>416 Range Not Statisfiable</p> <ul><li>请求范围不满足实际资源的大小，其中Content-Range中的complete-length显示完整响应的长度，例如<br>
+Content-Range: bytes */1234</li></ul> <h3 id="测试-4">测试</h3> <p>如果获取范围超出实际资源的大小，比如获取30-40。返回416
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/17024f86b1c2627d~tplv-t2oaga2asx-image.image" alt=""></p> <p>200 OK</p> <ul><li>服务器不支持Range请求时，则以200返回完整的响应包体</li></ul> <h2 id="多重范围与multipart">多重范围与multipart</h2> <ul><li>请求：<br>
+Range: bytes=0-50, 100-150</li> <li>响应:<br>
+Content-Type: multipart/byteranges; boundary=...</li></ul> <h3 id="测试-5">测试</h3> <p>获取5-10， 10-15片段。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/8/17024fb9b1b267e9~tplv-t2oaga2asx-image.image" alt=""></p> <h2 id="总结">总结</h2> <p>1、客户端通过Range头部传递请求范围</p> <p>2、服务端返回Accept-Range头部表示是否支持Range请求。</p> <p>3、客户端如果在得到Range响应的一部分，并想在这部分响应未过期的情况下，获取其他部分的响应，可以用If-Range头部使用Etag或者Last-Modified为值。</p> <p>4、只获取部分的body，服务器返回206响应码，其中Content-Range头部显示当前片段响应体在完整包体中的位置</p> <p>5、客户端想多重范围下载资源，在Range头部的格式为Range: bytes=0-50, 100-150...(用逗号分隔)<br>
+响应头部Content-Type: multipart/byteranges; boundary=...</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/59.fd6482f8.js" defer></script>
+  </body>
+</html>

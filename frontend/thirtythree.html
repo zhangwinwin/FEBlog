@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>聊一聊Axios与登录机制 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/33.ab43cbf0.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>因为HTTP是一个stateless的协议，服务器并不会保存任何关于状态数据。</p> <p>所以需要登录功能让服务器在以后请求的过程中能够识别到你的身份，而不是每次发请求都要输入用户名和密码。</p> <p>下面介绍一下，我比较常用的登录方案：请求头携带<code>Token</code>的方式。</p> <p>具体步骤：</p> <ul><li>首次登录，将用户名密码传给后端，返回<code>token</code>。</li> <li>将<code>token</code>存储在<code>localStroage</code>和<code>Vuex</code>中。</li> <li>用<code>Axios</code>将<code>token</code>写入请求头中。</li> <li>前端每次请求接口都将携带<code>token</code>信息。</li> <li>后端判断<code>token</code>是否过期，过期或者没有，则返回401。</li> <li>前端根据401状态码，将页面重定向到登录页面中。</li></ul> <h2 id="封装localstorage">封装LocalStorage</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>// storage.js
+const Token = 'TOKEN'
+const TokenType = 'TOKEN_TYPE'
+
+export function getToken () {
+  return localStorage.getItem(TokenType) + ' ' + localStorage.getItem(Token)
+}
+
+export function setToken (data) {
+  localStorage.setItem(Token, data.token)
+  localStorage.setItem(TokenType, data.tokenType)
+}
+
+export function removeToken () {
+  localStorage.removeItem(Token)
+  localStorage.removeItem(TokenType)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>将上述方法写到公共方法里面，统一赋值到<code>Vue.prototype.$util</code>中（详情请看我上篇文章<a href="https://juejin.im/post/6844904132193566728" target="_blank" rel="noopener noreferrer">vue开发中的&quot;骚操作&quot;<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）</p> <p>封装非常简单，封装三个方法<code>getToken</code>、<code>setToken</code>、<code>removeToken</code>。</p> <ul><li>登录时，调用setToken将token值存储到localStorage中</li> <li>请求接口时，调用getToken将token值放在请求头中。</li> <li>token过期时，调用removeToken将localStorage中的token移除。</li></ul> <h2 id="封装axios">封装Axios</h2> <p>首先用<code>axios</code>创建一个实例，传入一些公共的配置。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// require.js
+import axios from 'axios';
+import qs from 'qs';
+
+const server = axios.create({
+    withCredentials: true,
+    transformRequest: [function (data) {
+        return qs.stringify(data)
+    }]
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>这里不统一配置<code>BaseURL</code>，是因为登录接口与业务接口可能是不在同一个域名下的，而且很可能是跨域的，所以需要配置<code>proxy</code>。</p> <p>我使用的是<code>vue-cli3</code>搭建脚手架，创建一个<code>proxy</code>文件，设置代理。</p> <p>然后在<code>vue.config.js</code>中引入，并配置在<code>devServer</code>的<code>proxy</code>属性中。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// vue.proxy.config.js
+export default {
+    '/login': { // 登录接口
+        target: 'http://XXX.XXX.XXX.XXX:8080',
+        changeOrigin: false,
+        ws: false,
+        pathRewrite: {
+            '^/login': '/login'
+        }
+    },
+    '/api': { // 业务接口
+        target: 'http://XXX.XXX.XXX.XXX:8899',
+        changeOrigin: false,
+        ws: false,
+        pathRewrite: {
+            '^/api': '/api'
+        }
+    }
+}
+
+// vue.config.js
+const proxy = require('./vue.proxy.config.js');
+...
+module.exports = {
+    deServer = {
+        proxy: proxy
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>然后配置请求拦截器，目的是为了将每个请求都写入一个<code>Authorization</code>的<code>header</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// require.js
+...
+server.interceptors.request.use(request =&gt; {
+  request.headers['Authorization'] = getToken()
+  return request
+}, error =&gt; {
+  return Promise.reject(error)
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>接着配置响应拦截器，目的是拦截<code>401</code>状态码。</p> <p>如果出现<code>401</code>状态码，就调用<code>removeToken</code>删除<code>localStorage</code>中的<code>token</code>并刷新页面。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// require.js
+...
+server.interceptors.response.use(response =&gt; {
+  return response
+}, error =&gt; {
+  if (error.response.status === 401) {
+    // 如果是在登录页报错的话直接显示报错信息，否则清除token
+    if (location.href.indexOf('login') &gt; 0) {
+      Vue.prototype.$notify.error({
+        title: '错误',
+        message: error.response.data.message
+      })
+      return
+    }
+    removeToken()
+    location.reload()
+  }
+  return Promise.reject(error)
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h2 id="路由处理">路由处理</h2> <p>访问登录之外的页面，都需要登录权限。比如首页，判断是否存在token，有就访问成功，没有则跳转到登录页面。</p> <p>页面路由跳转过程中，会使用全局钩子<code>router.beforeEach</code>中拦截路由，检测到没有<code>token</code>就重定向至登录页面。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// router.js
+import Vue from 'vue'
+import Router from 'vue-router'
+import routes from './routes.js'
+
+Vue.use(Router)
+export default async function () {
+    const router = new Router({
+        routes
+    })
+    router.beforeEach((to, from, next) =&gt; {
+        if (localStorage.getItem('TOKEN') === null &amp;&amp; to.path !== '/login') {
+            next({ path: '/login' })
+        }
+        next()
+    })
+    return router
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>大致上，登录功能就已经完成了。</p> <h2 id="权限">权限</h2> <p>有登录必有权限，有些页面只有管理员才能访问，有些页面所有人都能访问。那怎么处理比较好呢？</p> <p>路由级别的权限，我建议前端自己来配置，要不然，在开发阶段，每增加一个路由就要后端去配置，简直是噩梦。</p> <p>具体实现：</p> <ul><li>在挂载router时，先将一些公用页面挂载，比如说登录页面。</li> <li>当用户登录后，获取到用户角色的权限，再将其权限与路由表中每个页面所需的权限作一次比较，生成用户最终的路由表。</li> <li>调用router.addRouter()方法将其路由表添加到vue-router中。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// router.js
+export const normalRoutes = [
+    {
+        path: '/login',
+        name: 'login'
+        component: Login
+    },
+    {
+        path: '/',
+        name: '首页'
+        component: Index
+    }
+]
+
+export const permissionRoutes = [
+    {
+        path: '/edit',
+        name: '编辑页面',
+        component: Edit,
+        role: {
+            role: ['admin, 'editor']
+        }
+    },
+    ...
+    {
+        path: '*',
+        redirect: '/404'
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>注意：<code>404</code>页面一定要最后加载，如果放在<code>normalRoutes</code>中，后面的路由访问都将会被拦截到<code>404</code>。</p> <p>接下来在router.beforeEach中</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>router.beforeEach((to, from, next) =&gt; {
+    if (localStorage.getItem('TOKEN') === null &amp;&amp; to.path !== '/login') {
+        next({ path: '/login' })
+    } else {
+        // 判断是否有用户权限信息
+        if (store.state.loginState.roles.length === 0) {
+            // 请求用户权限信息
+            store.dispath('loginState/getUserInfo').then(res =&gt; {
+                // 生成可访问的路由表
+                store.dispath('loginState/generateRoutes', { res.data.roles }).then(() =&gt; {
+                    // 动态添加路由表
+                    router.addRoutes(store.state.loginState.asyncRoutes)
+                    next({...to, replace: true})
+                }
+                }
+            })
+        } else {
+            next()
+        }
+    }
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>接下来瞧一瞧generateRoutes的逻辑</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// store/modules/loginState.js
+import {normalRoutes, permissionRoutes} from './routes.js';
+function hasPermission(roles, route) {
+    if (route.meta &amp;&amp; route.meta.role) {
+        return roles.some(role =&gt; route.meta.role.indexOf(role) &gt;= 0)
+    } else {
+        return true
+    }
+}
+export const loginState = {
+    namespaced: true,
+    state: {
+        roles: [],
+        routes: normalRoutes,
+        asyncRoutes: []
+    },
+    mutations: {
+        SET_ROUTES: (state, routes) =&gt; {
+            state.asyncRoutes = routes;
+            state.routes = [...normalRoutes, ...routes]
+        }
+    },
+    actions: {
+        generateRoutes({commit}, data) {
+            return new Promise(resolve =&gt; {
+                const { roles } = data;
+                const asyncRoutes = permissionRoutes.filter(routes =&gt; {
+                    if (roles.indexOf('admin') &gt;= 0) return true;
+                    if (hasPermission(roles, routes)) {
+                        if (!!routes.children) {
+                            routes.children = routes.children.filter(child =&gt; {
+                                if (hasPermission(roles, child)) return child;
+                                return false;
+                            })
+                            return routes;
+                        } else {
+                            return routes;
+                        }
+                    }
+                    return false
+                });
+                commit('SET_ROUTES', asyncRoutes);
+                resolve();
+            })
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br></div></div><p>完！</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/33.ab43cbf0.js" defer></script>
+  </body>
+</html>

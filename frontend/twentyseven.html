@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VUE单元测试--开启测试之旅 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/43.730ebcf4.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>作为程序员，没有比临上线前发现之前的更改的代码导致应用崩溃更糟糕的事了。而唯一能够确保应用正常的工作的只有进行程序的测试。所以说对应用进行全面的测试是很重要的一件事了。</p> <p>高效的测试方法可以加快开发速度，提高代码质量，尽早发现并去除代码中的<code>BUG</code>。测试驱动开发<code>（TDD）</code>是一种在编写代码先编写测试代码的工作流程，即在编写代码前，得先编写能够确保组件正常运行的测试代码。</p> <p>而单元测试是对应用程序最小的单元运行测试的过程。通常是函数，但在<code>VUE</code>中，组件也是单元，因为组件的本质就是函数。</p> <p>下面简单的说说如何使用<code>JEST</code>进行<code>VUE</code>的单元测试。如果不熟悉<code>JEST</code>与<code>VUE</code>，建议看看官网。</p> <p>示例代码在<a href="https://github.com/zhangwinwin/FEBlog/tree/master/unitest" target="_blank" rel="noopener noreferrer">github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="组件的单元测试">组件的单元测试</h2> <p>单元是应用中最小的可测试部分。在<code>VUE</code>中，组件与函数都是可测试的单元。</p> <h3 id="搭载测试环境">搭载测试环境</h3> <p>对于新项目来说，可以使用<code>VUE-CLI</code>工具创建项目（版本如图所示）
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/43575777a7254a8eaf32bd7b0e522503~tplv-k3u1fbpfcp-watermark.image" alt=""> <img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb0b878cd8c2461c99551fedf4ef9179~tplv-k3u1fbpfcp-watermark.image" alt=""></p> <p>只需要在选择配置时<code>☑️Unit Testing</code>，并选择<code>JEST</code>作为测试框架即可。</p> <p>而对于现有项目而言（针对<code>@vue/cli</code>）想增加<code>jest</code>测试模块。运行以下命令行就会帮我们去安装<code>jest</code>模块。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>vue add unit-jest
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果你是一个动手能力较强的同学，还可以自己去搭建测试环境，可以参考<a href="https://vue-test-utils.vuejs.org/zh/guides/#%E8%B5%B7%E6%AD%A5" target="_blank" rel="noopener noreferrer">Vue Test Utils<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>好了，现在可以进行单元测试了。</p> <h3 id="挂载组件">挂载组件</h3> <p>当导入一个<code>VUE</code>组件时，它只是一个带有渲染函数和一些属性的对象或者函数。要测试组件行为，则首先得启动它并开启渲染过程。按照<code>VUE</code>的说法就是需要挂载组件。</p> <p>挂载组件，需要将组件选项转换为一个<code>VUE</code>构造函数。而组件选项对象不是一个有效的的构造函数，它只是一个普通的<code>JavaScript</code>对象。这时可以使用<code>Vue.extend</code>方法从选项中创建一个<code>VUE</code>构造函数:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue';
+import Home from '@/views/Home.vue';
+const Ctor = Vue.extend(Home);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>这时，就可以使用<code>new</code>操作符来创建一个实例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const vm = new Ctor();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>通常，<code>VUE</code>使用<code>el</code>选项在文档中查找添加的被渲染<code>DOM</code>节点。但一般的组件构造函数并没有<code>el</code>选项，因此在创建实例时，它不会自动挂载并生成<code>DOM</code>节点，需要手动调用<code>$mount</code>方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const vm = new Ctor().$mount()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当调用<code>$mount</code>时，<code>VUE</code>将生成一些<code>DOM</code>节点，可以使用实例中<code>$el</code>属性在测试中访问这些节点:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>expect(vm.$el.textContent).toContain('Welcome to Your Vue.js App')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>VUE</code>要使用<code>DOM</code>方法创建一个<code>DOM</code>树。这不意味着<code>VUE</code>组件的单元测试必须在浏览器环境中运行。因为在默认情况下，<code>Jest</code>会在<code>jsdom</code>库创建的浏览器环境中运行测试。<code>jsdom</code>是一个<code>DOM</code>实现，它完全是由运行在<code>DOM</code>中的<code>JavaScript</code>编写的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue';
+import Home from '@/views/Home.vue';
+
+describe('Home.vue', () =&gt; {
+  it('renders msg when mounted', () =&gt; {
+    const msg = 'Welcome to Your Vue.js App';
+    // 使用Home选项创建一个新的Vue构造函数
+    const Ctor = Vue.extend(Home);
+    // 创建一个新的Vue实例并挂载该实例
+    const vm = new Ctor().$mount();
+    // 访问DOM元素，检查文本内容
+    expect(vm.$el.textContent).toContain(msg)
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>运行<code>yarn run test:unit</code>，测试通过
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ed9b2dd886a4829870a125a2d7a18d9~tplv-k3u1fbpfcp-watermark.image" alt=""></p> <h3 id="使用vue-test-utils">使用<code>Vue Test Utils</code></h3> <p>挂载组件需要自己去创建构造函数并且手动挂载。与其自己编写这些代码，不如使用<code>Vue Test Utils</code>库来帮忙实现。</p> <p><code>Vue Test Utils</code>库会让<code>Vue</code>组件单元测试变得更加简单。它包含一些辅助方法可以实现组件挂载、与组件交互以及断言组件输出。</p> <p><code>Vue Test Utils</code>会导出一个<code>mount</code>方法，该方法在接收一个组件后，会将其挂载并返回一个包含被挂载组件实例<code>vm</code>的包装器对象。之所以会返回包装器对象而不直接返回<code>vm</code>实例，是因为包装器不仅仅只有实例<code>vm</code>，还包括一些辅助方法。其中一个方法就是<code>text</code>，它返回实例的<code>textContent</code>。</p> <p>使用<code>Vue Test Utils</code>库改造刚刚的测试</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { mount } from '@vue/test-utils';
+import Home from '@/views/Home.vue';
+
+describe('Home.vue', () =&gt; {
+  it('renders msg when mounted', () =&gt; {
+    const msg = 'Welcome to Your Vue.js App';
+    // 使用mount方法挂载组件
+    const wrapper = mount(Home);
+    // 检查文本内容
+    expect(wrapper.text()).toContain(msg)
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h4 id="使用shallowmount">使用<code>shallowMount</code></h4> <p>除了<code>mount</code>方法，<code>Vue Test Utils</code>还包含一个<code>shallowMount</code>方法。<code>shallowMount</code>不会像<code>mount</code>一样渲染整个组件树，它只渲染一层组件树
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/130620b309254f75bbb66bfc5d48bf2d~tplv-k3u1fbpfcp-watermark.image" alt="">
+与<code>mount</code>相似，<code>shallowMount</code>挂载一个组件并返回一个包装器。不同之处在于，<code>shallowMount</code>在挂载组件之前对所有子组件进行存根。</p> <p><code>shallowMount</code>可以确保对一个组件进行独立测试，有助于避免测试中因子组件的渲染输出而混乱结果。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>describe('Home.vue', () =&gt; {
+  it('renders msg when mounted', () =&gt; {
+    const msg = 'Welcome to Your Vue.js App';
+    // 使用shallowMount方法挂载组件
+    const wrapper = shallowMount(Home);
+    // 检查文本内容
+    expect(wrapper.text()).toContain(msg)
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="输出测试">输出测试</h3> <h4 id="测试prop">测试<code>prop</code></h4> <p>为一个组件编写单元测试时，需要为组件提供生成环境中接收到的输入数据。如果组件在生产环境中接收一个<code>prop</code>，需要在组件挂载到测试时为组件提供该<code>prop</code>。</p> <p>使用<code>Vue Test Utils</code>将<code>prop</code>作为一个选项对象传递给组件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { shallowMount } from '@vue/test-utils';
+import Hello from '@/components/HelloWorld.vue';
+
+describe('HelloWorld.vue', () =&gt; {
+  it('renders msg when mounted', () =&gt; {
+    const msg = 'hello, world';
+    // 使用shallowMount方法挂载组件
+    const wrapper = shallowMount(Hello, {
+      propsData: {
+        msg
+      }
+    });
+    // 检查文本内容
+    expect(wrapper.text()).toContain(msg)
+  })
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>运行<code>yarn run test:unit</code>，测试通过!</p> <p>包装器<code>text</code>方法将返回组件渲染的所有文本。<code>toContain</code>匹配器会检查一个值是否包含在它所检查的字符串中的某个位置，它有点像<code>string.prorotype.includes</code>方法。</p> <p>而像上面例子，<code>props</code>中的<code>msg</code>变量是渲染在<code>&lt;h1&gt;</code>标签上的，没有必要去匹配组件下的全部文本，需要测试<code>&lt;h1&gt;</code>标签上的文本是否匹配即可。这时可以使用包装器的<code>find</code>方法。</p> <p><code>find</code>方法可以为渲染输出中的每个节点获取包装器，而且<code>find</code>会搜索与选择器匹配的第一个节点的渲染输出，并返回包含给匹配节点的包装器。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/ 检查文本内容
+    expect(wrapper.find('h1').text()).toContain(msg)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>并不是所有<code>prop</code>都渲染出文本。所以还要检查组件实例是否接收正确的<code>prop</code>。这时可以使用<code>props</code>方法。</p> <p><code>props</code>方法是一个包装器方法。它返回一个对象，其中包含一个包装器组件实例及它们的值<code>prop</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>expect(wrapper.props().msg).toBe(msg)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>使用<code>toBe</code>匹配器检查组件所有的渲染文本是否违反此原则。</p> <p>还可以检查当前组件传值是否正确</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const wrapper = shallowMount(fatherComponent)
+expect(wrapper.find(ChildComponent).props().propA).toBe('example')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>这里需要注意的是，如果一个组件未声明要接收一个<code>prop</code>，则<code>prop</code>不会被添加到这个<code>Vue</code>实例中。</p> <h4 id="测试dom属性">测试DOM属性</h4> <p>在<code>Vue Test Utils</code>包装器中，有一个<code>attribute</code>方法，可以返回组件属性对象。可以使用该对象来测试属性值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const a = wrapper.find('a');
+expect(a.attributes().href === 'http://cli.vuejs.org').toBa(true)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5eec37ee949b4f83a710865eb8000280~tplv-k3u1fbpfcp-watermark.image" alt="">
+错误信息显示：期望是<code>true</code>，返回的是<code>false</code>。这是一个<code>Boolean</code>断言，这样的信息并没有很清晰的了解到测试为什么会失败，所以应该要避免<code>Boolean</code>断言。应该使用值断言代替它
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c846b7f034e946fab50ab6f071e4284a~tplv-k3u1fbpfcp-watermark.image" alt="">
+这样就非常清楚是哪里的问题导致测试失败了。</p> <h4 id="测试样式">测试样式</h4> <p>在<code>Vue Test Utils</code>包装器中，有一个<code>classes</code>方法，返回一个<code>class</code>数组。可以对此进行断言，查看元素是否具有一个<code>class</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>expect(a.classes()).toContain('firstA')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>toContain</code>匹配器不仅可以检查一个字符串中是否包含另一个字符串，还能比较数组中的值。</p> <p>通常来说测试内联样式是没有价值的，但有时候不得不去测试一个内联样式。比如说：进度条组件，动态地添加一个内联样式。这时就需要直接访问包装器元素并获取样式属性值。</p> <p>每一个包装器都包含一个<code>element</code>属性，它是对包装器包含的<code>DOM</code>根节点的引用。可以使用它来访问内联元素</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>expect(a.element.style.fontSize).toBe('14px')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/43.730ebcf4.js" defer></script>
+  </body>
+</html>

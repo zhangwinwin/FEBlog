@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript代码是怎么执行的 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/20.8ae18d54.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>众所周知，JavaScript是单线程语言。所以JavaScript是按顺序执行的！本文完（狗头）</p> <h2 id="先编译再执行">先编译再执行</h2> <h3 id="变量提升">变量提升</h3> <p>请看下面的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>console.log(cat)
+catName(&quot;Chloe&quot;);
+var cat = 'Chloe'
+function catName(name) {
+    console.log(&quot;我的猫名叫 &quot; + name);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>按照得出的结论：&quot;JavaScript是按顺序执行的&quot;来看，步骤如下：</p> <ul><li>执行第一句的时候，cat并没有定义，结果应该是抛出一个错误，然后结束执行。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Uncaught ReferenceError: cat is not defined
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>但实际的执行结果并不是这样：<br>
+不仅可以执行，catName()执行结果也输出了。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/16/170e267441de4f13~tplv-t2oaga2asx-image.image" width="600"></p> <p>这种现象就是： <strong>变量提升</strong></p> <p>从概念的字面意义上说，“变量提升”就是把变量和函数的声明移动到代码的最前面，变量被提升后，会给变量设置默认值--undefined。</p> <p>调整之后的执行顺序如下：</p> <ul><li>首先执行var cat = undefined和function catName(){}</li> <li>然后执行console.log(cat) // undefined</li> <li>接着调用catName()</li> <li>最后给cat赋值cat = 'Chloe'</li></ul> <p>移动一词容易造成误解。实际在物理层面上代码的位置并没有改变。JavaScript是解析执行的语言，在执行前会先经过编译阶段。造成这种现象的原因是：<strong>JavaScript引擎在编译阶段中将变量和函数的声明放在了内存中。</strong></p> <h3 id="执行上下文">执行上下文</h3> <blockquote><p>变量提升（Hoisting）被认为是， Javascript中执行上下文 （特别是创建和执行阶段）工作方式的一种认识</p></blockquote> <p>在编译阶段，JavaScript会为上述代码创建一个执行上下文和可执行代码。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/16/170e2a26108b775f~tplv-t2oaga2asx-image.image" width="600"></p> <p>执行上下文是JavaScript执行一段代码时的运行环境，包含this、变量、对象以及函数等。</p> <p>1、在编译阶段</p> <ul><li>JavaScript引擎会将var变量声明和函数声明等的变量提升内容放在变量环境中。</li> <li>接下来JavaScript引擎会把声明以外的代码编译为字节码--可执行代码。</li></ul> <p>2、执行阶段</p> <ul><li>执行到console.log(cat)时，JavaScript引擎在变量环境中查找cat这个变量，由于变量环境存在cat变量，并且其值为undefined，所以这时候就输出undefined。</li> <li>当执行到catName函数时，引擎在变量环境中查找该函数，由于变量环境中存在该函数的引用，所以引擎执行该函数，并输出执行结果。</li> <li>执行cat赋值，引擎在变量环境查找到cat变量，并进行赋值。</li></ul> <p><strong>创建执行上下文的三种情况：</strong><br>
+1、<strong>全局执行上下文</strong>：JS引擎在编译全局代码时，创建全局执行上下文。在当前页面中，全局执行上下文仅有一个。</p> <p>2、<strong>函数执行上下文</strong>：在调用一个函数时，JS引擎会创建一个函数执行上下文。一般情况下，当函数执行完毕后就会销毁此函数执行上下文。</p> <p>3、<strong>eval函数执行上下文</strong>：执行eval函数时，也会创建一个执行上下文。</p> <h3 id="调用栈">调用栈</h3> <p>JS引擎通过栈的数据结构来管理多个执行上下文。</p> <blockquote><p>栈是计算机科学中的一种抽象数据类型，只允许在有序的线性数据集合的一端（称为堆栈顶端，英语：top）进行加入数据（英语：push）和移除数据（英语：pop）的运算。因而按照后进先出（LIFO, Last In First Out）的原理运作</p></blockquote> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e67ac52aa05c2~tplv-t2oaga2asx-image.image" width="600"> <p>在一个执行上下文创建好后，JS引擎就会它压进栈中。管理执行上下文的栈结构就称为调用栈，或者执行上下文栈。</p> <p>请看下面例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function foo() {
+    var a = 0
+    console.log(a)
+}
+function bar() {
+    var b = 1
+    foo()
+    console.log(b)
+}
+bar()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>步骤如下：<br>
+1、创建全局执行上下文，并将其压入栈底。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e69424bf675d0~tplv-t2oaga2asx-image.image" width="600"></p> <p>2、执行全局代码：bar()。调用bar函数时，JS引擎会编译bar函数，并为其创建一个函数执行上下文。最后将其执行上下文压入栈中，并且将变量b赋予默认值undefined。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e69aaf6dd6778~tplv-t2oaga2asx-image.image" width="600"></p> <p>3、执行bar函数内部的代码。先执行b = 1的赋值操作，然后调用foo函数。JS引擎编译foo函数，并为其创建一个函数执行上下文。最后将其执行上下文压入栈中，并且将变量a赋予默认值undefined。<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e6a11c28be205~tplv-t2oaga2asx-image.image" width="600"></p> <p>4、执行foo内部的代码。执行a = 1赋值操作，然后输出a的值。foo函数执行完毕后，调用栈就将其执行上下文从栈顶弹出。接着执行bar函数。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e6a4df5aa6f2a~tplv-t2oaga2asx-image.image" width="600"></p> <p>5、执行完bar函数后，调用栈就将其执行上下文从栈顶弹出。剩下全局执行上下文<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e69424bf675d0~tplv-t2oaga2asx-image.image" width="600"></p> <p>整个JavaScript流程执行就到此结束了。</p> <p>调用栈是JS引擎追踪函数执行的一个机制，当一次有多个函数被调用时，通过调用栈就能够追踪到哪个函数正在被执行以及各函数之间的调用关系。</p> <h2 id="var缺陷与块级作用域">var缺陷与块级作用域</h2> <h3 id="变量提升带来的问题">变量提升带来的问题</h3> <p>1、变量被覆盖</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var cat = &quot;foo&quot;
+function catName(){
+  console.log(cat);
+  if(false){
+   var cat = &quot;bar&quot;
+  }
+  console.log(cat);
+}
+catName()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>调用catName时，调用栈如下图所示：
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e76dbc5f68f5d~tplv-t2oaga2asx-image.image" width="600"></p> <ul><li>创建catName执行上下文时，JavaScript引擎会将var变量声明cat提升内容放在变量环境中，赋予默认值undefined。</li> <li>执行到catName内部的console.log(cat)时，在catName执行上下文中的变量环境找到了cat的值，输出undefined。</li> <li>if判断为false，不执行。</li> <li>执行console.log(cat)，参照第二步，输出undefined。</li></ul> <p>2、变量没被销毁</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function foo () {
+    for (var i=0; i&lt;10; i++){}
+    console.log(i)
+}
+foo()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>直观的来说，会以为for循环结束后，i会被销毁。结果并非如此，console.log(i)输出10。</p> <p>原因也是变量提升，在创建foo执行上下文时，i被提升了。所以for循环结束后，i并没有被销毁。</p> <h3 id="块级作用域">块级作用域</h3> <p>存储变量中的值以及对这个值进行访问或修改，是编程语言的基本功能。而 <strong>作用域</strong> 则是如何存储变量以及如何访问这些变量的规则。</p> <p>在ES6前，JavaScript只支持两种方法创建作用域：</p> <ul><li>全局作用域</li> <li>函数作用域</li></ul> <p>而其他编程语言则都普遍支持块级作用域。</p> <p><strong>块级作用域</strong> 就是使用一对大括号包裹的一段代码，比如函数、判断语句、循环语句，甚至单独的一个{}都可以被看作是一个块级作用域。</p> <p>简单来讲，在块级作用域内部定义的变量在其块级作用域外部是访问不到的，并且等该内部代码执行完成之后，其定义的变量会被销毁。</p> <p>由于JavaScript不支持块级作用域，所以才会有变量提升带来的问题。</p> <p>幸好，ES6改变了现状，引入了新的let和const关键字，提供了除var以外的另一种变量声明方式。</p> <p>let和const关键字可以将变量绑定到所在的任意作用域中(通常是{}内部)。换句话说，let为其声明的变量创建了块作用域。</p> <p>块级作用域的作用，请看下面例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var cat = &quot;foo&quot;
+function catName(){
+  if(true){
+   var cat = &quot;bar&quot;
+   console.log(cat);
+  }
+  console.log(cat);
+}
+catName()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>在这段代码中，有两处声明了cat变量，一处在全局作用域，一处在catName函数作用域中的if语句里面。</p> <p>在执行if语句内部时，调用栈如下图所示:
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e7c29f9d840a2~tplv-t2oaga2asx-image.image" width="600"></p> <p>从图中可看出两处console.log(cat)都输出bar。</p> <p>使用let改写上面代码</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var cat = &quot;foo&quot;
+function catName(){
+  if(true){
+   let cat = &quot;bar&quot;
+   console.log(cat);
+  }
+  console.log(cat);
+}
+catName()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>if语句执行结束后，let声明的cat变量就会被销毁，第二处的console.log(cat)就会输出foo
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e7c5f695f102d~tplv-t2oaga2asx-image.image" width="600"></p> <h3 id="javascript内部实现块级作用域">JavaScript内部实现块级作用域</h3> <p>请看下面的例子</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function foo(){
+    var a = 1
+    let b = 2
+    {
+      let b = 3
+      var c = 4
+      let d = 5
+      console.log(a)
+      console.log(b)
+    }
+    console.log(b) 
+    console.log(c)
+    console.log(d)
+}   
+foo()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>步骤如下：<br>
+1、第一步创建全局执行上下文<br>
+2、执行foo()，创建foo函数的执行上下文<br> <img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e7d9faed0e025~tplv-t2oaga2asx-image.image" width="600"></p> <ul><li>在函数内部使用var声明的变量都放在变量环境中，并赋予一个默认值undefined。</li> <li>在函数内部使用let声明的变量被放在词法环境中，没有赋予一个默认值。</li> <li>在函数内部中的{}内部使用let声明的变量没有放在词法环境中。</li></ul> <p>3、执行foo函数内部的{}块，此时a和b的已经初始化了，并且进入作用域块时，作用域块中通过let声明的变量，会被存放在词法环境的一个单独的区域中，这个区域中的变量并不影响作用域块外面的变量。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e7e03d12024c1~tplv-t2oaga2asx-image.image" width="600"></p> <p>在词法环境内部维护了一个栈结构，栈底是函数最外层的变量，进入一个作用域块后，就会把该作用域块内部的变量压入栈中；当作用域执行完成之后，该作用域的let和const声明的变量就会从栈顶弹出。</p> <p>4、作用域块执行结束后，词法环境的栈结构就把其信息从栈顶弹出。
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/17/170e7e53a0960ba0~tplv-t2oaga2asx-image.image" width="600"></p> <p>使用let或const声明的变量，在达到声明处之前都是无法访问的，试图访问会导致一个 引用错误，即使在通常是安全的操作时（例如使用typeof运算符）也是如此。示例如 下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>if (true) {
+    console.log(typeof value); // 引用错误
+    let value = 'blue'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>因为value位于暂时性死区(temporal dead zone, TDZ)的区域内--该名称并没有在ECMAScript规范中被明确命名，但经常被用于描述let或const声明的变量为何在声明之前无法被访问。</p> <h2 id="总结">总结</h2> <p>1、JavaScript代码是先编译再执行的。</p> <p>2、执行是按顺序一段一段执行的，一段代码是指一个执行上下文。</p> <p>3、执行上下文有三种情况：</p> <ul><li>全局执行上下文</li> <li>函数执行上下文</li> <li>eval执行上下文</li></ul> <p>4、let和const支持块级作用域</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/20.8ae18d54.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端必备的Nginx知识 | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/58.4cf7f096.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/22.f37786bd.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link router-link-active">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="nginx">Nginx</h2> <h3 id="初识nginx">初识Nginx</h3> <p>从事前端的开发，或多或少都听说过<code>Nginx</code>。即使没有使用过<code>Nginx</code>，也肯定知道<code>Nginx</code>可以搭建<code>Web</code>静态资源服务。</p> <p>一般来说<code>Nginx</code>有三大应用场景：</p> <ul><li>静态资源服务-通过本地文件系统提供服务</li> <li>反向代理服务-缓存、负载均衡</li> <li><code>API</code>服务-<code>openresty</code></li></ul> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/551b09721d7c4fa2a97a75e2745e504b~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+如图所示：<br>
+通常一个<code>URL</code>请求先通过<code>Nginx</code>转发到应用服务，然后再去访问数据库。</p> <p>一般来说应用服务的运行效率是很低的，而且并发都是受限的。所以需要把很多应用服务组成一个集群，向用户提供高可用性。随着把应用服务都组成集群，那么就会带来两个需求。</p> <ul><li>第一、需要动态的扩容.</li> <li>第二、有些服务出了问题之后，需要做容灾。
+所以就需要<code>Nginx</code>具有反向代理功能。</li></ul> <p>而且在这样的一个链路中，<code>nginx</code>一般是处于企业内网的一个边缘节点，随着网络链路的增长，用户体验的到时延就会增加。所以需要把一些不变的，或者说在一段时间内不变的资源缓存在<code>nginx</code>中，比如<code>css</code>文件、图片，由<code>nginx</code>直接提供服务，这样时延就会减少很多。所以这样就衍生出<code>nginx</code>的缓存功能。</p> <p>数据库服务要比应用服务好得多，应用功能比较简单，所以并发与运行都要远高于应用服务。所以衍生出第三个应用场景，直接由<code>nginx</code>访问数据库服务，利用<code>nginx</code>的强大并发性实现如<code>web</code>防火墙等复杂的业务功能</p> <h3 id="nginx组成">Nginx组成</h3> <p><code>Nginx</code>主要有4部分组成：</p> <ul><li><code>Nginx</code>二进制可执行文件</li> <li><code>Nginx.conf</code>配置文件</li> <li><code>asscess.log</code>文件</li> <li><code>error.log</code>文件</li></ul> <p><code>Nginx</code>的二进制可执行文件是由官方模块或者第三方模块一起编译出的一个文件。这个文件提供了<code>nginx</code>所需要的功能，就如同一辆汽车，本身提供了载人、高速行走等功能，至于音响，冷气等功能视乎于自己想不想要。</p> <p>虽然二进制可执行文件提供了许多功能，但开启与关闭或者如何使用这些功能就需要配置文件，就好比一辆汽车需要驾驶员来驾驶一样。<code>Nginx.conf</code>配置文件就是这个驾驶员。</p> <p><code>asscess.log</code>就是记录每一条请求信息，凡走过必留痕迹，这些痕迹就在<code>access.log</code>文件中。</p> <p><code>error.log</code>文件是记录问题的文件，就好比汽车的黑匣子一样，如果汽车发生问题，就要打开黑匣子看看，究竟是驾驶员出现的问题还是汽车本身的问题。</p> <h3 id="编译nginx">编译Nginx</h3> <p>编译<code>Nginx</code>大概分以下步骤：</p> <ul><li>下载<code>Nginx</code>。</li> <li>执行<code>configure</code>。</li> <li>编译与安装<code>Nginx</code>。</li></ul> <p><em><strong>1、下载Nginx</strong></em><br>
+从<code>nginx.org</code>网站下载即可
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1d15446c97844f82be018a1a44f0ed38~tplv-k3u1fbpfcp-watermark.image" alt="image.png"> <code>nginx</code>的版本分为三类：</p> <ul><li><code>Mainline</code>：开发版</li> <li><code>Stable</code>：最新稳定版</li> <li><code>Legacy</code>：老版本的稳定版</li></ul> <p>这里使用<code>1.18.0</code>版本</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 在centos7中演示，使用如下命令行
+// 下载nginx
+wget http://nginx.org/download/nginx-1.18.0.tar.gz
+
+// 解压nginx压缩包
+tar -zxvf nginx-1.18.0.tar.gz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>下图为解压后的nginx目录
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c458cefce4fb483ebf5bd67297b730f2~tplv-k3u1fbpfcp-watermark.image" alt="image.png"> <code>auto</code>目录：是一些判用于断操作系统支持与编译等相关的文件。<br> <code>CHANGE</code>S文件：<code>nginx</code>版本的迭代日志（.ru是俄语版，因为作者是俄罗斯）<br> <code>conf</code>目录：是示例配置文件，用于配置参考。<br> <code>configure</code>文件：用于编译生成中间文件的脚本。<br> <code>contrib</code>目录: 提供了<code>nginx</code>语法支持脚本。<br> <code>man</code>目录：提供了<code>nginx</code>帮助文档。<br> <code>html</code>目录: 提供了两个标准的<code>html</code>文件<br> <code>src</code>目录: 源码目录</p> <p><em><strong>2、编译与安装Nginx</strong></em></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 使用以下命令行，查看执行configure时的参数
+./configure --help
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9475e0eea2f5436193cb82765ab46216~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+这些代码是配置这几个模块的地址，引导<code>nginx</code>在执行在这些地址中读取相应的内容。</p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/edc97a6440ee4dfcb5f9484596eafc13~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+这些代码是说明使用哪些模块，不使用哪些模块。主要是用<code>with</code>和<code>without</code>区分。</p> <p>默认情况下，只需要配置<code>prefix</code>就行，该参数是指定将<code>nginx</code>编译在哪里，比如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>./configure -- prefix=/home/nginx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>生成的中间文件在<code>objs</code>目录下
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/46bfb790e2f24a149f7990849888547f~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <p>接着编译<code>nginx</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>make
+
+make install
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>ok</p> <h3 id="nginx语法">Nginx语法</h3> <p><code>Nginx</code>的配置文件是一个<code>ASNCLL</code>文本文件，由指令和指令块两部分组成。比如说</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>http {
+    include mine.types;
+    upstream image {
+        server: 127.0.0.1:8080
+    }
+    server {
+        listen 443 http2;
+        limit_req_zone $binary_remote_addr
+        location ~*\.(jpg|png)$ {
+            proxy_pass http://image
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p><code>http{}</code>大括号组成一个指令块，而<code>include</code>则是一条指令。指令块是否能配置名字是根据提供这个指令块的<code>nginx</code>模块来决定的。每条指令都是以;分号结尾，指令与参数之间以一个或多个空格分隔。而<code>mine.types</code>则是<code>include</code>指令的参数，可以有多个参数。</p> <p>特别是<code>include</code>指令，它是允许组合多个配置文件以提升可维护性。<code>mine.types</code>这是一个含有很多条不同文件的后缀名与<code>http</code>协议中<code>mine</code>格式的对照关系表。</p> <p>使用<code>$</code>符合表示一个变量。比如<code>$binary_remote_addr</code>作为<code>limit_req_zone</code>指令的参数，表示远端的地址。</p> <p>部分指令的参数是支持正则表达式的。比如<code>location</code>指令的参数正是正则表达式，而且正则表达式中括号的内容可以用<code>$1,$2</code>等方式取出来。</p> <p><strong>http</strong>指令块包含以下4个块：</p> <ul><li><code>http</code></li> <li><code>server</code>--对应一个/一组域名</li> <li><code>upstream</code>--表示上游服务，当<code>nginx</code>需要与<code>tomcat</code>、企业内网等服务交互时就可以定义一个<code>upstream</code></li> <li><code>location</code>--一个<code>url</code>表达式
+<code>http</code>指令块的所有指令都是由<code>http</code>模块解析执行的，也就是说<code>http</code>模块只能解析执行上面4种模块。</li></ul> <p><strong>命令行</strong>主要格式是<code>nginx</code>指令参数，比如<code>nginx -s reload</code>。其中<code>-s</code>就是指令，表示发送信号，<code>reload</code>就是参数，表示重载配置文件。以下是几种常用指令的介绍：</p> <ul><li>帮助: -?、-h</li> <li>使用指定的配置文件：-c
+默认的情况下，编译出来的<code>nginx</code>会寻找在执行<code>configure</code>时指定的配置文件，但可以使用命令行指令使用指定的配置文件，使用-c+配置文件路径</li> <li>指定配置指令：-g
+在命令行使用的配置指令可以覆盖在<code>config</code>目录里的指令</li> <li>指定运行目录：-p
+在命令行使用指定目录会将默认的目录替换掉</li> <li>发送信息：-s
+nginx操作运行中的进程方法一般是通过发送信号-s，有以下几种操作：
+1、<code>stop</code>：表示立即停止服务
+2、<code>quit</code>：表示优雅的停止服务,在退出前完成已经接受的连接请求
+3、<code>reload</code>：表示优雅的停止服务再重新载入配置文件
+4、<code>reopen</code>：表示重新开始记录日志文件</li> <li>测试配置文件是否有语法错误： -t -T
+修改完配置之后，重新运行之前，可以先使用-t来测试是否有语法错误</li> <li>打印<code>nginx</code>的版本信息、编译信息等：-v -V</li></ul> <h3 id="小试牛刀-搭建静态资源web服务器">小试牛刀-搭建静态资源Web服务器</h3> <p>准备一个<code>web</code>静态资源(我用的是之前学习的webgl的例子)，先来看看怎么配置<code>nginx</code> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d8590345c63041a7955a027c1c42bf4c~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+首先配置<code>listen</code>指令，监听<code>8000</code>端口。接着配置一个<code>location</code>指令块，<code>/</code>表示所有请求，然后配置<code>/</code>后的路由与请求目录下的路径要一致，这时有两种使用方法，<code>alias</code>是其中一种。</p> <p><strong>listen</strong>：请求进入<code>nginx</code>前，首先需要监听端口使得<code>nginx</code>与客户端建立一个<code>tcp</code>链接。<code>listen</code>指令就是用来监听端口的，处于<code>server</code>指令块内的。通过监听的端口与地址就能判断使用哪些<code>server</code>去处理请求。</p> <p>listen指令值主要分为三种类型：</p> <ul><li><code>address[:port]</code>-监听一个地址或者加相应的端口。比如<code>listen 127.0.0.1:8000</code></li> <li><code>port</code>-监听一个端口。比如<code>listen 8000</code></li> <li><code>unix:path</code>-监听一个<code>unix socket</code>地址，只用于本机通讯。比如<code>unix:/var/run/nginx.sock</code></li></ul> <p>然后使用命令重载nginx<code>nginx -s reload</code>，这时访问<code>localhost:8000</code>就能看到效果了
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/80131160bc724278874b845fc52c4d9d~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <p><strong>root与alias</strong>：这两个指令主要功能都是将<code>url</code>映射为文件路径，以返回静态文件内容。主要的差别在于：</p> <ul><li><code>root</code>有一个默认值<code>html</code>，可以出现在<code>http、server</code>和<code>location</code>指令块内，并且会将完整的<code>url</code>映射进文件路径中</li> <li><code>alias</code>没有默认值，只能出现在<code>location</code>指令块中，并且只会将<code>location</code>后的<code>url</code>映射到文件路径
+举例说明：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>location /root {
+    root html
+}
+
+location /alias {
+    alias html
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>当访问<code>localhost/root/</code>时，根据配置的指令值，会在<code>html</code>后加上<code>/root</code>再去访问<code>index.html</code>。所以实际访问的路由地址为<code>localhost/html/root/index.html</code>。这是因为<code>root</code>会将完整的<code>url</code>映射进文件路径中。</p> <p>而访问<code>localhost/alias/</code>时，访问的路由地址为<code>localhost/html/index.html</code>。</p> <h4 id="使用gzip压缩来减少网络传输">使用gzip压缩来减少网络传输</h4> <p>当访问的资源很大时，往往会消耗大量的宽带，也增加加载时间。<code>nginx</code>可以设置静态资源的压缩功能。
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d0d34ffa2eb4b8c85ac583628454e6a~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <ul><li><code>gzip on;</code>表示打开<code>gzip</code>功能开关</li> <li><code>gzip_min_length 1;</code>表示<code>gzip</code>最小压缩字节大小，如果一个文件很小，在一个<code>tcp</code>报文就能发送出来，这时再进行压缩效果不太，却又消耗<code>cpu</code>。（我这是为了演示才设置为1）</li> <li><code>gzip_comp_level 2;</code>表示压缩级别</li> <li><code>gzip_types:</code>表示只对列出来的类型进行压缩
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/80a8f6e81fe6470ab05fe1cd660282ae~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+压缩后只有830kb，而且在响应头中也能看出使用了gzip压缩
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b8e77b8108e4398bca8aa4c11717974~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></li></ul> <h4 id="使用autoindex">使用autoindex</h4> <p>使用<code>autoindex</code>可以将一个目录信息分享给用户，用户根据自己需求打开对应目录。
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb07b41171764ab2ae71fa71b3ea3336~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+在文档中介绍到，当访问<code>/</code>结尾的<code>url</code>时，会对应到这个目录并展示这个目录的结构。使用方法就是把<code>autoindex</code>置为<code>on</code>
+访问<code>css/</code>这个文件夹时：
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bdc3b17e789c4f938d3f69a31d03ead8~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <p>这里需要提出一点的是，会有一些情况：开启了<code>autoindex</code>后，还是不会返回目录结构。可能是因为配置<code>index</code>指令，<code>index</code>指令优先级会大于<code>autoindex</code>指令。具体如下：</p> <p><strong>index</strong>：当访问/时会返回<code>index</code>指令的文件内容。<code>index file</code>，默认值是<code>index.html</code>，可以出现在<code>http、server</code>和<code>location</code>指令块中。</p> <p><strong>autoindex</strong>：当<code>url</code>以<code>/</code>结尾时，尝试以<code>html/xml/json</code>等格式返回<code>root/alias</code>中指向目录的目录结构</p> <h4 id="限制访问速度">限制访问速度</h4> <p>因为公网带宽是有限的，当有许多用户同时访问时，他们是一个增强关系。这时可能需要用户访问一些大文件时限制访问速度，以确保能有足够的带宽使得其他用户能够访问一些例如<code>css，js</code>等基础文件。这时可以设置<code>set</code>的命令配合一些内置变量来实现这一个功能。比如说</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>set $limit_rate 1k;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>限制服务器向浏览器发送响应的速度。<code>$limit_rate</code>这个变量可以在官网的<code>ngx_http_core_module</code>模块中的<code>Embedded Variables</code>中
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1aa2e867b92548148b9266711c3e2bdc~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+用法就是变量后面加上一个以空间为单位的数字，表示每秒传输多少字节。加上限制之后，会发现访问速度有变化。</p> <h4 id="记录access日志">记录access日志</h4> <p>日志要显示什么内容，就要看要设置什么样的格式。使用log_format指令定义日志的格式。
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cada2d5b5884b12821f6aef01182ce6~tplv-k3u1fbpfcp-watermark.image" alt="image.png"> <code>log_format</code>格式允许设置一个名字，这就可以对不同用途时记录不同格式的日志文件。如图所示，设置为名为<code>main</code>的日志格式。这个格式使用了很多内置变量：</p> <ul><li><code>$remote_addr:</code>表示远端的ip地址，也就是浏览器的ip地址</li> <li><code>$remote_user：</code>表示用户名提供基本身份验证</li> <li><code>$time_local：</code>表示访问时间</li> <li><code>$request：</code>完整的原始请求行</li> <li><code>$status：</code>表示响应状态</li> <li><code>$body_bytes_sent：</code>发送给客户端的body字节数</li> <li><code>$http_referer：</code>表示从哪跳转过来</li> <li><code>$http_user_agent：</code>用户浏览器的类别，版本以及操作系统的一些信息</li> <li><code>$http_x_forwarded_for：</code>客户端请求头中的<code>&quot;X-Forwarded-For&quot;</code>
+设置完<code>log_format</code>之后，就要去设置日志记录的地方。使用<code>access_log</code>指令。</li></ul> <p><code>access_log</code>所在哪个<code>server</code>块中，就表示这类请求的日志都记录在<code>access_log</code>设置的地方；</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>server {
+    ...
+    access_log logs/access.log main;
+} 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>表示将这个<code>server</code>的请求记录在<code>logs</code>的<code>access.log</code>文件中，采用<code>main</code>的记录格式
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3783d5c45ab1451380595e37100f2a17~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <h3 id="再接再厉-搭建有缓存服务的反向代理服务器">再接再厉——搭建有缓存服务的反向代理服务器</h3> <p>由于上游服务要处理非常复杂的业务逻辑而且还要讲求开发效率，所以一般来说性能并不怎么样。此时使用<code>nginx</code>作为反向代理服务器，就能用一台<code>nginx</code>把请求按照负载均衡算法代理给多台上游服务器，这样的好处：</p> <ul><li>能实现水平扩展，在用户无感知的情况下添加更多的上游服务器来提升处理性能。</li> <li>当有一些上游服务器出现问题时，<code>nginx</code>可以自动的将请求从有问题的上游服务器转发给正常的上游服务器。</li></ul> <p>现在有两台<code>nginx</code>服务器，一台是上面例子展示的<code>web</code>静态资源服务器，用在上游服务器。另外一台<code>nginx</code>用作反向代理服务器</p> <p>在反向代理服务器中添加<code>upstream</code>表示上游服务：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>upstream example {
+    server 192.168.3.108:8008;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>上游服务地址填在<code>server</code>指令中，如果有多台上游服务就定义多条<code>server</code>。这个<code>upstream</code>上游服务命名为<code>example</code>。接下来就使用<code>proxy_pass</code>指令代理到这个<code>example</code>上游服务。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>server {
+    ...
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-Ip $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://example
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>设置<code>proxy_set_header</code>是因为，当有了反向代理，一些变量的值可能就没有那么准确。比如说<code>tcp</code>链接是有对端地址，但有了反向代理之后，反向代理与客户端是一个<code>tcp</code>链接，反向代理与上游服务器也是一个<code>tcp</code>链接。如果取<code>$remote_addr</code>变量值，也就是<code>tcp</code>链接的远端地址，在上游服务中取到的值其实是反向代理服务器的ip地址。所以通过<code>proxy_set_header</code>添加一些头部给到上游服务器获取正确的客户端地址。</p> <p>这些配置都可以在官网中的<code>ngx_http_proxy_module</code>中找到
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec0ea96fe3f6405aa5de384b24ce8d01~tplv-k3u1fbpfcp-watermark.image" alt="image.png">
+接着访问<code>www.zww.pub</code> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c2c2a21485c4b1790df76e23c5cb0bc~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p> <h4 id="配置缓存服务器">配置缓存服务器</h4> <p>当<code>nginx</code>作为反向代理时，通常只有动态请求也就是不同用户访问同一个<code>url</code>时看到的内容是不同的，这是才会交由上游服务处理。有些内容一段时间内不会发生变化的，为了减轻上游服务的处理压力，就会让nginx缓存上游服务的返回信息一段时间。在这段时间内，是不会向上游服务请求的。</p> <p>首先配置<code>proxy_cache_pass</code>指令，比如缓存文件写在哪、文件的命名方式、开多大的共享内存等控制缓存的属性</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>proxy_cache_path /opt/niginx/nginxcache levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>使用的时候，只需配置<code>proxy_cache</code>指令即可</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>server {
+    ...
+    location / {
+        ...
+        proxy_cache my_cache;
+        proxy_cache_key $host$uri$is_args$args;
+        proxy_cache_valid 200 304 302 1d;
+        ...
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>同一个<code>url</code>访问时，对不同的用户可能返回的内容是不同的。所以<code>key</code>的配置中需要包含用户的变量，<code>$host$uri$is_args$args</code>是一个比较简单的<code>key</code>，只跟<code>host、uri</code>和一些参数作为整体<code>key</code>。
+<code>vaild</code>指定是针对哪些响应不返回。</p> <p>再刷新一下，就能把上游服务缓存下来。接着把上游服务停掉，再次刷新也能访问得到。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/58.4cf7f096.js" defer></script>
+  </body>
+</html>

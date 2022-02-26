@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CommonJs与ES6Module | zhangwinwin&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    <link rel="stylesheet" href="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.css">
+    <script src="https://github.com/markdown-it/markdown-it/blob/master/bin/markdown-it.js"></script>
+    <script src="https://gitcdn.xyz/cdn/goessner/markdown-it-texmath/master/texmath.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <meta name="description" content="some technical articles on programming, especially webgl">
+    
+    <link rel="preload" href="/FEBlog/assets/css/0.styles.d6193a66.css" as="style"><link rel="preload" href="/FEBlog/assets/js/app.b158500d.js" as="script"><link rel="preload" href="/FEBlog/assets/js/2.7d7fb6cb.js" as="script"><link rel="preload" href="/FEBlog/assets/js/22.f37786bd.js" as="script"><link rel="prefetch" href="/FEBlog/assets/js/10.f2a2cc76.js"><link rel="prefetch" href="/FEBlog/assets/js/11.9d2c86e2.js"><link rel="prefetch" href="/FEBlog/assets/js/12.b8ebcb32.js"><link rel="prefetch" href="/FEBlog/assets/js/13.c4ca47c5.js"><link rel="prefetch" href="/FEBlog/assets/js/14.a3911fae.js"><link rel="prefetch" href="/FEBlog/assets/js/15.f3798b20.js"><link rel="prefetch" href="/FEBlog/assets/js/16.3988fd0d.js"><link rel="prefetch" href="/FEBlog/assets/js/17.a3bff097.js"><link rel="prefetch" href="/FEBlog/assets/js/18.0402de45.js"><link rel="prefetch" href="/FEBlog/assets/js/19.64dfd7bd.js"><link rel="prefetch" href="/FEBlog/assets/js/20.8ae18d54.js"><link rel="prefetch" href="/FEBlog/assets/js/21.686fbff4.js"><link rel="prefetch" href="/FEBlog/assets/js/23.d01475c6.js"><link rel="prefetch" href="/FEBlog/assets/js/24.b50cb274.js"><link rel="prefetch" href="/FEBlog/assets/js/25.dec00c3c.js"><link rel="prefetch" href="/FEBlog/assets/js/26.be064a51.js"><link rel="prefetch" href="/FEBlog/assets/js/27.204b551b.js"><link rel="prefetch" href="/FEBlog/assets/js/28.843b63a9.js"><link rel="prefetch" href="/FEBlog/assets/js/29.58e09b07.js"><link rel="prefetch" href="/FEBlog/assets/js/3.65fb9823.js"><link rel="prefetch" href="/FEBlog/assets/js/30.68fadd92.js"><link rel="prefetch" href="/FEBlog/assets/js/31.da110779.js"><link rel="prefetch" href="/FEBlog/assets/js/32.fd8ecdbf.js"><link rel="prefetch" href="/FEBlog/assets/js/33.ab43cbf0.js"><link rel="prefetch" href="/FEBlog/assets/js/34.9eb09d94.js"><link rel="prefetch" href="/FEBlog/assets/js/35.d24309ed.js"><link rel="prefetch" href="/FEBlog/assets/js/36.2b760384.js"><link rel="prefetch" href="/FEBlog/assets/js/37.cf57d516.js"><link rel="prefetch" href="/FEBlog/assets/js/38.ebd67282.js"><link rel="prefetch" href="/FEBlog/assets/js/39.390dc348.js"><link rel="prefetch" href="/FEBlog/assets/js/4.6e58adc1.js"><link rel="prefetch" href="/FEBlog/assets/js/40.9dba16d5.js"><link rel="prefetch" href="/FEBlog/assets/js/41.a3240bd5.js"><link rel="prefetch" href="/FEBlog/assets/js/42.eb5be3bf.js"><link rel="prefetch" href="/FEBlog/assets/js/43.730ebcf4.js"><link rel="prefetch" href="/FEBlog/assets/js/44.ccc62d57.js"><link rel="prefetch" href="/FEBlog/assets/js/45.ad1d828c.js"><link rel="prefetch" href="/FEBlog/assets/js/46.5b36dcbd.js"><link rel="prefetch" href="/FEBlog/assets/js/47.4a801f44.js"><link rel="prefetch" href="/FEBlog/assets/js/48.7e166c43.js"><link rel="prefetch" href="/FEBlog/assets/js/49.23c05926.js"><link rel="prefetch" href="/FEBlog/assets/js/5.720089dd.js"><link rel="prefetch" href="/FEBlog/assets/js/50.4e03a0f5.js"><link rel="prefetch" href="/FEBlog/assets/js/51.e42c88ba.js"><link rel="prefetch" href="/FEBlog/assets/js/52.f07316b9.js"><link rel="prefetch" href="/FEBlog/assets/js/53.eb8ab9b1.js"><link rel="prefetch" href="/FEBlog/assets/js/54.4cd69611.js"><link rel="prefetch" href="/FEBlog/assets/js/55.d67f2251.js"><link rel="prefetch" href="/FEBlog/assets/js/56.0e8e4426.js"><link rel="prefetch" href="/FEBlog/assets/js/57.e6a8e7d6.js"><link rel="prefetch" href="/FEBlog/assets/js/58.4cf7f096.js"><link rel="prefetch" href="/FEBlog/assets/js/59.fd6482f8.js"><link rel="prefetch" href="/FEBlog/assets/js/6.837ac311.js"><link rel="prefetch" href="/FEBlog/assets/js/60.3ce8a368.js"><link rel="prefetch" href="/FEBlog/assets/js/61.3162b2a8.js"><link rel="prefetch" href="/FEBlog/assets/js/62.ced16e8f.js"><link rel="prefetch" href="/FEBlog/assets/js/63.645bd795.js"><link rel="prefetch" href="/FEBlog/assets/js/64.4f65269b.js"><link rel="prefetch" href="/FEBlog/assets/js/65.14527b40.js"><link rel="prefetch" href="/FEBlog/assets/js/66.e572cb43.js"><link rel="prefetch" href="/FEBlog/assets/js/7.f30bf9bf.js"><link rel="prefetch" href="/FEBlog/assets/js/8.2380c336.js"><link rel="prefetch" href="/FEBlog/assets/js/9.f775cc22.js">
+    <link rel="stylesheet" href="/FEBlog/assets/css/0.styles.d6193a66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/FEBlog/" class="home-link router-link-active"><!----> <span class="site-name">zhangwinwin's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/FEBlog/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/FEBlog/webgl/" class="nav-link">
+  Webgl
+</a></div><div class="nav-item"><a href="/FEBlog/frontend/" class="nav-link router-link-active">
+  Frontend
+</a></div><div class="nav-item"><a href="/FEBlog/network/" class="nav-link">
+  Network
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="博客地址" class="dropdown-title"><span class="title">博客地址</span> <span class="arrow down"></span></button> <button type="button" aria-label="博客地址" class="mobile-dropdown-title"><span class="title">博客地址</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/zhangwinwin/FEBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1486195453331757" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言">前言</h2> <p>现代前端开发每时每刻都和模块打交道。例如，在项目中引入一个插件，或者实现一个供全局使用组件的JS文件。这些都可以称为模块。</p> <p>在设计程序结构时，不可能把所有代码都放在一起。更为友好的组织方式时按照特定的功能将代码拆分为多个代码片段，每个片段实现一个功能或者一个特定的目的，然后通过接口的方式组合在一起。这就是模块思想。</p> <h2 id="javascript里的模块">JavaScript里的模块</h2> <p>众所周知，JavaScript在早期是没有模块这一概念。唯有通过srcipt标签将多个js文件一个个的插入在HTML中。当项目越来越大时，这种方式会导致很多问题：</p> <ul><li>需要手动维护JavaScript的加载顺序。因为通常script之间会有很多依赖关系，但这种关系都是隐式的，除非一个个去查看注释（如果没有注释，那就...），否则很难指明谁依赖谁。</li> <li>命名冲突。所有script文件所定义的所有内容都由全局作用域共享。一个人开发还好，碰上多人协作开发，那就是灾害。</li> <li>如果script数量太多，这也会影响页面加载。因为script标签都需要向服务器请求资源，过多的请求会严重降低渲染的速度。</li></ul> <p>而模块化就能很好的解决以上问题。</p> <h3 id="何为模块">何为模块</h3> <p>模块是使用不同方式加载的JS文件。这种不同模式很有必要，因为它与脚本有着非常不同的语义，在ES6的模块中有着下列的语义：</p> <ul><li>模块自动运行在严格模式下。</li> <li>在模块的顶层作用域创建的变量，不会被自动添加在共享的全局作用域中，它们之后在各自的模块顶层作用域下生存。</li> <li>通过导入导出的语句，可以非常清晰的指明模块的依赖关系。</li></ul> <p>这些差异代表了JS代码加载与执行方面的显著改变。</p> <h3 id="模块的发展">模块的发展</h3> <p>从2009年开始，JavaScript社区开始对模块化不断进行尝试，并依次出现了AMD、CommonJs、CMD等解决方案。</p> <p>Nodejs是CommonJs规范的主要实践者，所以也是这几个方案里面使用最广泛的方案。但这些都只是由社区提出的规范，并不能算语言本身的特性。</p> <p>到了2015年，ECMAScript6.0正式定义了JavaScript模块标准。</p> <h2 id="commonjs">CommonJs</h2> <p>JavaScript在2009年提出了CommonJs规范，包含了模块、文件、IO、控制台在内的一系列标准。并且nodejs实现了CommonJS中的一部分，并在其基础上进行了一些调整。现在我们所说的CommonJs其实是Nodejs中的版本，并非它的原始定义。</p> <p>CommonJs最初只为服务器端服务的。因为它定义的两个主要概念：</p> <ul><li>require函数，用于导入；</li> <li>module.exports变量，用于导出；</li></ul> <p>这两个关键字，浏览器都不支持。直到社区出现了诸如browserify编译库将commonjs编译成为浏览器所能支持的语法。这就意味着客户端代码可以遵循Commonjs标准来编写了。</p> <p>不仅如此，借助Nodejs的npm包管理器，开发人员还可以获取社区上的优秀代码库，或者将自己的代码发布出去以供需要的人使用。这种方式使CommonJs在前端开发中逐渐流行了起来。</p> <h3 id="模块">模块</h3> <p>CommonJs规范中规定了每一个文件都是一个模块。使用require导入的文件会形成一个属于自身的模块作用域，这样就不会在进行变量以及函数声明时会污染全局作用域。所有的变量和函数都只有模块自身能访问，对外不可见的。</p> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+var name = 'foo';
+
+// bar.js
+var name = 'bar';
+require('./foo.js');
+console.log(name); // bar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>在bar.js中通过require函数加载foo.js。运行之后输出的结果是‘bar’，这就说明了foo.js中的变量声明并不会影响bar.js。每个文件都拥有自己的作用域。</p> <h3 id="导出">导出</h3> <p>导出是一个模块对外暴露自身的唯一方式。在CommonJs中，通过module.exports可以导出模块中的内容。</p> <p>举例:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>module.exports = {
+    name: 'foo'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>CommonJs模块内部会有一个module对象用于存放当前模块的信息，可以理解为在每个模块的最开始中定义了以下对象：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var module = {};
+// ...
+module.exports = {};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>CommonJs也支持另一种导出方式：exports。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>exports.name = 'foo'
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在实现上，这段代码与上面的module.exports没有不同，其内在机制是将exports指向了module.exports。可以简单的理解为CommonJs在每个模块的开头默认添加了以下代码:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var module = {
+    exports: {}
+}
+var exports = module.exports;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>因此，为export.name赋值相当于在module.exports对象上添加了一个name属性。</p> <p>也很容易看出exports与module.exports只是指向同一个对象。所以对exports进行赋值操作，使其指向新的对象，就会失效了。</p> <p>举例:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>exports = {
+    name: 'foo'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>此时name属性并不会被导出。</p> <p>另外这两个方法，并不能一起运用。因为使用module.exports赋值就相当于使其指向新的对象。之前的exports赋值都会失效。</p> <h3 id="导入">导入</h3> <p>CommonJs使用require函数进行导入操作。</p> <p>举例:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+module.exports = {
+    sayname: function () {
+        console.log('foo');
+    }
+};
+
+// bar.js
+var sayname = require('./foo.js').sayname;
+sayname(); // foo
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>在bar.js中导入了foo.js，并调用了它的sayname函数。</p> <p>当require一个模块时会有两种情况：</p> <ul><li>模块是第一次被require加载。这时会首先执行该模块，然后导出内容。</li> <li>模块是曾经被require加载过。这时会直接导出执行得到的结果。</li></ul> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+console.log('running foo.js')
+exports.name = 'foo';
+
+// bar.js
+var firstname = require('./foo').name;
+console.log('firstname:', firstname); 
+
+var lastname = require('./foo').name;
+console.log('lastname:', lastname);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>输出的是：</p> <p>running foo.js<br>
+fistname:foo</p> <p>lastname:foo</p> <p>从上面代码看有两个地方都require了foo文件，但从结果看，只运行了一遍foo.js。</p> <p>module对象中有一个loaded属性用于记录该模块是否被加载过。默认值为false，当模块第一次被加载时，会赋值为true，后面再次加载时会检查module.loaded是否为true，如果是，则直接返回结果，并不会再次执行代码。</p> <p>require函数可以接受表达式，借助这个特性可以动态地制定模块的加载路径。</p> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var path = ['foo.js', 'bar.js'];
+path.forEach(name =&gt; {
+    require('./' + name);
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="es6module">ES6Module</h2> <p>CommonJs可以说是比较好的解决了模块的问题，但这些都只是由社区提出的规范，并不能算语言本身的特性。</p> <p>到了2015年，ECMAScript6.0正式定义了JavaScript模块标准。从此 JavaScript 语言才具备了模块这一特性。</p> <h3 id="模块-2">模块</h3> <p>将前面CommonJs的例子，用ES6Module方式改写。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+export default {
+    sayname: function () {
+        console.log('foo');
+    }
+};
+
+// bar.js
+import foo from './foo.js'
+foo.sayname(); // foo
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>ES6Module也是将每个文件作为一个模块，每个模块拥有自身的作用域，不同的是导入、导出语句。import和export也是作为保留关键字在ES6版本加入了进来，而且ES6Module会自动采用严格模式。</p> <h3 id="导出-2">导出</h3> <p>在ES6Module中使用export命令来导出模块。export有两种形式：</p> <ul><li>命名导出</li> <li>默认导出</li></ul> <p>1、命令导出<br>
+一个模块可以有多个命名导出，有两种不同的写法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 1
+export const name = 'foo';
+
+// 2
+const name = 'foo';
+export { name }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>可以通过as关键字对变量重命名。</p> <p>例如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const name = 'foo';
+export { name as nickname }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>2、默认导出<br>
+默认导出只能有一个：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>export default {
+    name: 'foo'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>可以将export default理解为对外输出一个名为default的变量。</p> <h3 id="导入-2">导入</h3> <p>ES6Module使用import语法导入模块。</p> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+export const name = 'foo';
+// bar.js
+import { name } from './foo'
+console.log(name)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>加载带有命令导出的模块时，import后面要跟一对大括号来将导入的变量名包裹起来，并且这写变量名需要与导出的变量名完全一致。导入变量的效果相当于在当前作用域下声明了这些变量，并且不可以对齐进行修改。</p> <p>与命令导出类似，也可以通过as关键字对导入的变量重命名。</p> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+export const name = 'foo';
+// bar.js
+import { name as nickname } from './foo'
+console.log(nickname)
+
+// 也可以通过整体导入的方法
+import * as name from './foo'
+console.log(name.name)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>默认导入的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo.js
+export default {
+    name: 'foo'
+}
+
+// bar
+import name from './foo'
+console.log(name.name)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="commonjs与es6module的区别">CommonJs与ES6Module的区别</h2> <h3 id="对模块依赖的处理区别">对模块依赖的处理区别</h3> <p>CommonJs与ES6Module最本质的区别在于前者对模块依赖的解决是动态的，而后者是静态的。</p> <ul><li>动态：模块依赖关系的建立是发生在代码运行阶段；</li> <li>静态：模块依赖关系的建立是发生在代码编译阶段；</li></ul> <p>在CommonJs中，当模块A加载模块B时，会执行B的代码，将其module.exports对象作为require函数的返回值进行返回。并且requrie的模块路径可以动态指定，支持传入一个表示式，甚至可以使用if语句判断是否加载某个模块。所以CommonJs模块被执行前，并没有办法确定明确的依赖关系，模块的导入，导出发生在代码的运行阶段。</p> <p>ES6Module的导入、导出语句都是声明式的，不支持导入的路径是一个表达式，并且导入、导出语句必须位于模块的顶层作用域。在ES6代码的编译阶段就可以分析出模块的依赖关系。</p> <h3 id="导入模块值的区别">导入模块值的区别</h3> <p>在导入一个模块时，对于CommonJs来说是得到了一个导出值的拷贝；而在ES6Module中则是值的动态映射，并且这个映射是只读的。</p> <p>举例：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo
+var count = 0;
+module.exports = {
+    count: count,
+    add: function (a, b) {
+        count++;
+        return a+b;
+    }
+}
+
+// bar
+var count = require('./foo').count;
+var add = require('./foo').add;
+
+console.log(count); // 0
+add(2,3);
+console.log(count); // 0
+
+count += 1;
+console.log(count); // 1(拷贝值可以更改)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>bar中的count是对foo中count的一份值拷贝，因此在调用add函数时，虽然更改了foo中count的值，但是并不会对bar中导入值造成更改。</p> <p>另一方面拷贝值可以进行更改。</p> <p>使用ES6Module进行改写</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo
+let count = 0;
+const add = function (a,b) {
+    count++;
+    return a+b;
+}
+export { count, add }
+
+// bar
+import { count, add } from './foo';
+console.log(count); // 0
+add(2,3);
+console.log(count); // 1（实时反映foo中count的值）
+
+count++; // 报错 count is read-only
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>可以将映射关系理解为一面镜子，从镜子中可以实时观察到原有的事物，但不能操作镜子中的影像。</p> <h3 id="循环依赖的区别">循环依赖的区别</h3> <p>CommonJs中循环依赖的例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo
+const bar = require('./bar')
+console.log('来自bar：', bar);
+module.exports = 'foo';
+
+// bar
+const foo = require('./foo');
+console.log('来自foo：', foo);
+module.exports = 'bar;
+
+// index
+require('./foo')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>在控制台输出:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>来自foo：()
+来自bar：bar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>首先来梳理执行流程：</p> <ul><li>index文件中引入了foo，此时开始执行foo中的代码；</li> <li>foo第一句导入了bar，这是foo不会继续向下执行，而是进入了bar的内部。</li> <li>在bar中又引入了foo，这里产生了循环依赖。但并不会再次执行foo，而是直接导出返回值，也就是module.exports。但由于foo未执行完，导出值是默认的空对象，因此当bar执行到console.log时，打印出来的是空对象。</li> <li>bar执行完毕，foo继续向下执行直到流程结束。</li></ul> <p>使用ES6Module重写上面例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// foo
+import bar from './bar';
+console.log('来自bar：', bar);
+export default 'foo'
+
+// bar
+import foo from './foo'
+console.log('来自foo：', foo);
+export default 'bar'
+
+// index
+import foo from './foo'
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>结果是:
+来自foo: undefined
+来自bar：bar</p> <p>在bar中同样无法得到foo正确的导出值，只不过和CommonJS默认导出一个空对象不同，这里获取到的是undefined。</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/FEBlog/assets/js/app.b158500d.js" defer></script><script src="/FEBlog/assets/js/2.7d7fb6cb.js" defer></script><script src="/FEBlog/assets/js/22.f37786bd.js" defer></script>
+  </body>
+</html>
