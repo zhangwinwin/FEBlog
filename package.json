@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  },
+  "name": "zbolg",
+  "version": "1.0.0",
+  "description": "zhangwinwin blog",
+  "main": "index.js",
+  "repository": "git@github.com:zhangwinwin/FEBlog.git",
+  "author": "zhangwinwin <344879340@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "@neilsustc/markdown-it-katex": "^1.0.0",
+    "markdown-it-texmath": "^0.9.7"
+  }
+}

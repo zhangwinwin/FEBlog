@@ -1,0 +1,297 @@
+---
+title: (三)使用VUE3编写WebGL程序
+---
+
+## 前言
+编程的学习，最重要的就是动手干！而开始动手前，首先得搭建好一个框架，所以今天给大家分享一下如何使用`VUE3`搭建一个`WebGL`项目。
+
+这并不是说写`WebGL`项目非要什么`React`、`VUE`这些前端库/框架才行，用原生`JavaScript`照样可以写的非常舒服和流畅。但是基于前端框架来写，还是有非常多的好处的：比如说公司是用`VUE`的，所以用`VUE`写一来可以契合公司的技术栈，二来还能学习一下`VUE3`。何乐而不为呢？
+
+## 基于VUE3编写WebGL程序
+首先我选择的是`@vue/cli`。因为对于`vite`来说，`webpack`更加熟悉一点。这样的话学习成本就不会很高，还能在控制的范围内。好，废话不多说，直接开干！
+
+### 搭建VUE3
+使用[@vue/cli](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)命令行搭建一个项目
+```js
+vue create webgl-test
+```
+接着我[会以JSX的方式来编写VUE代码](https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md)，所以还要安装插件
+```js
+npm install @vue/babel-plugin-jsx -D
+```
+接着配置`babel`，在`babel.config.js`中添加`plugins`属性:
+```js
+{
+  "plugins": ["@vue/babel-plugin-jsx"]
+}
+```
+
+接下来，创建一个`clickPoints.js`文件，因为下面以是点击增加点来作为例子。
+```js
+import { defineComponent, ref, onMounted } from 'vue';
+export const ClickedPointes = defineComponent(({
+    setup () {
+        const root = ref(null);
+        const canvasDown = (e) => {}
+        return () => <canvas ref={root} onClick={canvasDown}  width="400" height="400"></canvas>
+    }
+}))
+```
+这样`VUE`的搭建大致就是这了（[setup的语法可以看官方文档](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0040-script-setup.md)）
+
+### 编写WebGL
+在编写之前，先说一下`WebGL`的流程。大致可分为这五个步骤：
+* 获取`<canvas>`元素，创建`WebGL`绘图上下文
+* 编写顶点着色器与片段着色器源代码
+* 创建着色器对象并载入以及编译着色器代码
+* 创建程序对象并插入和链接该着色器对象
+* 绘制
+
+**获取canvas元素，创建WebGL绘图上下文**:  
+在`VUE`中使用`ref`获取`canvas`元素
+```js
+const root = ref(null);
+onMount () {
+    const canvas = root.value;
+}
+return () => <canvas ref={root}></canvas>
+```
+这样就能在`onMount`生命周期函数里面获取`canvas`元素。使用`canvas`来创建`WebGL`绘图上下文，为了方便将其抽象为一个函数。
+```js
+const getWebglContext = (canvas) => {
+  const ctx = canvas.getContext('webgl');
+  return ctx
+}
+onMount () {
+    const canvas = root.value;
+    const gl = getWebglContext(canvas);
+}
+```
+
+**编写顶点着色器与片段着色器源代码**:  
+着色器是一种使用类似于C的编程语言实现的精美视觉效果。编写着色器的语言也被称为着色器语言`(shading language)`，`OpenGL ES2.0`给予`OpenGL`着色器语言`（GLSL）`，因此后者也被称为`OpenGL ES`着色器语言`（GLSL ES）`。`WebGL`是基于`OpenGL ES2.0`，所以也使用`GLSL ES`编写着色器。
+
+在`JavaScript`中，着色器程序是以字符串的形式“嵌入”其中的。`WebGL`需要两种着色器：
+* 顶点着色器`(Vertex shader)`：顾名思义，顶点着色器是用于描述顶点的特性（位置、颜色等）。顶点指的是二维或三维空间的一个点。
+* 片段着色器`（Fragment shader）`：在进行逐片段操作时的程序，片段`（fragment）`是一个`WebGL`的术语，可以简单的理解为像素。
+```js
+const VShader = `
+attribute vec4 a_Position;
+void main() {
+  gl_Position = a_Position;
+  gl_PointSize = 10.0;
+}
+`
+const FShader = `
+void main() {
+  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
+`
+```
+在这个例子中，着色器程序非常简单，只是设置了顶点位置和尺寸以及片段的颜色。注意`gl_Position`是一个内置变量且必须被赋值，否则着色器就无法正常工作。
+
+与`JavaScript`不同，`GLSL ES`是一种强类型语言，必须要明确的指定变量的类型。
+* float：表示浮点数
+* vec4：表示由四个浮点数组成的矢量
+顶点着色器控制点的位置与尺寸，片段着色器控制点的颜色。它们都是由`main`函数开始执行。
+
+**创建着色器对象并载入以及编译着色器代码**：  
+为了能创建一个可以载入到`GPU`中且能够绘制几何图形的`WebGL`着色器。需要创建一个着色器对象，并把源代码载入到该对象中，然后编译、链接到这个着色器。因为顶点和片段两个着色器对象的创建是一样的，所以也可以将此步骤抽象为函数：
+```js
+const loadShader = (gl, type, source) => {
+  const shader = gl.createShader(type);
+  if (shader === null) {
+    console.log('unable to create shader')
+    return null
+  }
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+
+  const compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS)
+  if (!compiled) {
+    gl.getShaderInfoLog(shader)
+    console.log('Failed to compile shader')
+    gl.deleteShader(shader)
+    return null;
+  }
+  return shader;
+}
+```
+1、使用`gl.createShader`方法创建一个着色器对象。参数可以取`gl.VERTEX_SHADER`或者`gl.FRAGMENT_SHADER`值。  
+2、然后使用`gl.shaderSource`方法将源代码载入到着色器对象中，第一个参数为已经创建好的着色器对象，第二个参数表示着色器的源代码。  
+3、载入后，调用`gl.compileShader`方法编译着色器。  
+4、最后使用`gl.getShaderParameter`方法检查编译状态。如出现编译错误，则使用`gl.deleteShader`方法删除该着色器对象。
+
+**创建程序对象并插入和链接该着色器对象**：  
+创建好着色器对象之后，还需要创建程序对象。
+```js
+const createProgram = (gl, vshader, fshader) => {
+  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader)
+  const flagShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader)
+  if (!vertexShader || !flagShader) {
+    return null
+  }
+  const program = gl.createProgram();
+  if (!program) {
+    return null;
+  }
+  gl.attachShader(program, vertexShader)
+  gl.attachShader(program, flagShader)
+
+  gl.linkProgram(program)
+  var linked = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (!linked) {
+    var error = gl.getProgramInfoLog(program);
+    console.log('Failed to link program: ' + error);
+    gl.deleteProgram(program);
+    gl.deleteShader(flagShader);
+    gl.deleteShader(vertexShader);
+    return null;
+  }
+  gl.useProgram(program)
+  gl.program = program
+}
+```
+* 调用`gl.createProgram`方法创建程序对象。
+* 并通过`gl.attachShader`方法把编译好的顶点着色器对象和片段着色器对象载入到该程序对象中。
+* 然后调用`gl.linkProgram`方法执行链接操作，如果链接成功就得到一个程序对象。
+* 调用`gl.useProgram`方法，告诉`WebGL`引擎可以用这个程序对象绘制图形
+链接之后，`WebGL`实现把顶点着色器和片段着色器使用的使用的属性绑定到通用属性索引上。`WebGL`实现已为顶点的属性分配了固定数目的插槽，通用属性索引就是其中某个插槽的标识符。
+
+**绘制**：  
+经过一系列初始化之后在`WebGL`系统中建立了着色器。然后`WebGL`就会对着色器进行解析，辨识出着色器具有的`attribute`变量，每个变量都具有一个存储地址，以便通过存储地址向变量传输数据。比如向顶点着色器的`a_Position`变量传输数据，首先使用`gl.getAttribLocation`方法向`WebGL`系统请求该变量的存储地址。
+```js
+let a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+```
+该方法的第一个参数是程序对象，因为它包含了顶点着色器和片段着色器，第二个参数就是想要获取的变量名称。
+
+得到该变量的存储地址后，就需要往该变量传输数据了，在这个例子中是通过点击来获取位置的。鼠标点击位置的信息存储在事件对象e中，可以通过`e.clientX`和`e.clientY`来获取位置坐标。但这坐标不能直接用：
+* 鼠标点击的位置坐标是浏览器的坐标，并不是`canvas`元素的坐标
+* `canvas`的坐标系统与`WebGL`的坐标系统是不一样的，其原点位置和Y轴的正方向都不一样
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/59e6961b98b34a02982e7d7967affd09~tplv-k3u1fbpfcp-watermark.image)
+首先将坐标从浏览器坐标系下转换到canvas坐标系下，然后再转换到WebGL坐标系下：
+```js
+const getBounding = (e) => {
+  const canvas = wRoot.value;
+  let x = e.clientX;
+  let y = e.clientY;
+  const rect = e.target.getBoundingClientRect();
+  x = ((x - rect.left) - canvas.width/2)/(canvas.width/2);
+  y = (canvas.height/2 - (y - rect.top))/(canvas.height/2);
+  return {
+    x,
+    y
+  }
+}
+```
+* 使用`getBoundingClientRect`方法获取`canvas`坐标，`rect.left与rect.top`就是`canvas`原点。这样`(x - rect.left)与(y - rect.top)`就可以将浏览器坐标系下的坐标转换为`canvas`坐标系下的坐标。
+* 将`canvas`坐标系转换为`WebGL`坐标系，首先获取`canvas`的中心点`（canvas.height / 2， canvas.width / 2）`
+* 使用`(x - rect.left) - canvas.width/2和canvas.height/2 - (y - rect.top)`将`canvas`原点平移到中心点
+* 最后`canvas`的x轴坐标区间为从0到`canvas.width`，而y轴区间从0到`canvas.height`。因为`WebGL`中轴的坐标区间从-1.0到1.0，所以将x，y坐标都除以中心点坐标就ok了。
+
+```js
+const canvasDown = (e) => {
+  const { x, y } = getBounding(e)
+  g_points.push(x);
+  g_points.push(y)
+  gl.clear(gl.COLOR_BUFFER_BIT)
+  const len = g_points.length;
+  for (var i = 0; i < len; i+= 2) {
+    gl.vertexAttrib3f(a_Position, g_points[i], g_points[i+1], 0,0)
+    gl.drawArrays(gl.POINTS, 0, 1)
+  }
+}
+```
+使用`gl.vertAttrib3f`方法往`a_Position`变量传输数据。接着交给`gl.drawArrays`方法绘制点。  
+看看效果：
+![clickpoints.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4080a6ea56854cd09cb7e7320aaade85~tplv-k3u1fbpfcp-watermark.image)
+
+### 改造WebGL
+虽然效果不错，但对于这个例子来说只是简单的点击屏幕渲染点而已，然而这个流程却太复杂了。还有一点就是这个流程对于每个`WebGL`程序来说都是一样的，所以是不是能够抽象出来呢？
+
+而且前面说过着色器语言是编程语言，但在`JavaScript`里却只是字符串，完全没有给予相应的待遇！
+
+基于这几点，我们来改造这个`WebGL`程序：  
+**单独编写着色器语言**：  
+首先安装两个`loader`:
+```js
+npm install glslify-loader raw-loader
+```
+接着配置`webpack`，在`@vue/cli`构建的项目中，要在`vue.config.js`文件中配置`webpack`。
+```js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('webgl')
+      .test(/\.(glsl|vs|fs|vert|frag)$/)
+      .exclude
+        .add(/node_modules/)
+        .end()
+      .use('raw-loader')
+        .loader('raw-loader')
+        .end()
+      .use('glslify-loader')
+        .loader('glslify-loader')
+        .end()
+  }
+}
+```
+配置好后，如果不确定是否配置成功，可以使用以下命令将最终的`webpack`配置展示出来:
+```js
+vue inspect > output.js
+```
+这样就能得到`output.js`文件，里面是`webpack`配置
+![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6fb0e24ff3949d2b2dd916e479005d0~tplv-k3u1fbpfcp-watermark.image)
+然后安装两个`vscode`插件：
+* glsl-literal：用于语法高亮
+* GLSL Lint：用于代码检测
+这样就能编写`glsl`文件了
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c888a614bd9a42f4adbf8e716875d088~tplv-k3u1fbpfcp-watermark.image)
+
+**使用REGL库整合WebGL流程**：  
+安装[regl](https://github.com/regl-project/regl/blob/gh-pages/API.md)库：
+```js
+npm install regl
+```
+使用`require`引入
+```js
+import { defineComponent, ref, onMounted } from 'vue';
+import VSHADER from './vshader.glsl';
+import FSHADER from './fshader.glsl';
+const regl = require('regl');
+export const ClickedPointes = defineComponent(({
+    setup () {
+        const root = ref(null);
+        ...
+        const canvasDown = (e) => {
+            const point = getBounding(e);
+            gl.clear(gl.COLOR_BUFFER_BIT)
+            g_points.push(point);
+            g_points.forEach(item => {
+                drawPoint(item);
+            })
+        };
+        onMounted(() => {
+          gl = getWebglContext(wRoot)
+          const reglCtx = regl(gl);
+          drawPoint = reglCtx({
+            frag: () => FSHADER,
+            vert: () => VSHADER,
+            count: 1,
+            primitive: 'points',
+            attributes: {
+              'a_Position': reglCtx.prop('point')
+            }
+          });
+          gl.clearColor(0.0, 0.0, 0.0, 1.0);
+
+          // Clear <canvas>
+          gl.clear(gl.COLOR_BUFFER_BIT);
+        })
+        return () => <canvas ref={root} onClick={canvasDown}  width="400" height="400"></canvas>
+    }
+}))
+```
+现在只需要配置`reglCtx`，短短的几行代码就能代替之前的那几个流程。
+
+一个基本的`WebGL`项目就到此为止，如果有更好的示例可以在评论区说一下，我学习一下！
