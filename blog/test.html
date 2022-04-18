@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body,html{
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .d1{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .d2{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <script type="text/javascript">
+
+        function testST(){
+            requestAnimationFrame(function(){
+                document.querySelector('.d1').style.width = '200px';
+                console.log('RAF');
+            });
+            window.addEventListener('scroll', function() {
+                document.querySelector('.d1').style.width = '400px';
+                setTimeout(function(){
+                    document.querySelector('.d1').style.backgroundColor = 'green';
+                    console.log('timeout');
+                },0);
+                console.log('scroll');
+                sleep(200);
+            });
+            window.scrollBy(0,10);
+        }
+
+        function testPro(){
+            requestAnimationFrame(function(){
+                document.querySelector('.d1').style.width = '200px';
+                console.log('RAF');
+            });
+            window.addEventListener('scroll', function() {
+                document.querySelector('.d1').style.width = '400px';
+                Promise.resolve().then(function(){
+                    document.querySelector('.d1').style.backgroundColor = 'green';
+                    console.log('promise');
+                });
+                console.log('scroll');
+                sleep(200);
+            });
+            window.scrollBy(0,10);
+        }
+
+        function sleep(t){
+            let start = Date.now();
+            while(true){
+                if(Date.now() - start >= t){
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
