@@ -44,7 +44,7 @@ export function generatorToAsync(genFn) {
 //                 if (done) {
 //                     return resolve(value);
 //                 }
-//                 return Promise.resolve(value).then(val => gen.next(val), err => gen.throw(err))
+//                 return Promise.resolve(value).then(val => step(val), err => gen.throw(err))
 //             }
 //             step({});
 //         })
